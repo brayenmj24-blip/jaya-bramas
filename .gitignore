@@ -1,0 +1,23 @@
+# Environment / secrets — JANGAN pernah di-commit!
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+env/
+
+# Django
+*.sqlite3
+/staticfiles/
+/media/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+
+# File debug lama
+cek_kota.py
