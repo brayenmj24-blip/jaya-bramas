@@ -1,0 +1,105 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block content %}
+<div style="margin-bottom:2rem">
+  <h1 style="border:none!important;margin-bottom:.25rem!important">👋 Selamat datang, {{ user.first_name|default:user.username }}!</h1>
+  <p style="color:#78716C;font-size:14px">Dashboard Admin — Bramas Jaya Toko Tepung Serba Guna</p>
+</div>
+
+<!-- STAT CARDS -->
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2rem">
+  <div style="background:white;border:1px solid #E7E5E4;border-radius:14px;padding:1.25rem;border-left:4px solid #F59E0B">
+    <div style="font-size:11px;font-weight:600;color:#78716C;letter-spacing:1px;text-transform:uppercase;margin-bottom:.5rem">Menunggu Bayar</div>
+    <div style="font-size:28px;font-weight:700;color:#F59E0B">{{ stat_menunggu|default:"0" }}</div>
+    <div style="font-size:12px;color:#78716C;margin-top:4px">pesanan</div>
+  </div>
+  <div style="background:white;border:1px solid #E7E5E4;border-radius:14px;padding:1.25rem;border-left:4px solid #3B82F6">
+    <div style="font-size:11px;font-weight:600;color:#78716C;letter-spacing:1px;text-transform:uppercase;margin-bottom:.5rem">Perlu Dikonfirmasi</div>
+    <div style="font-size:28px;font-weight:700;color:#3B82F6">{{ stat_dibayar|default:"0" }}</div>
+    <div style="font-size:12px;color:#78716C;margin-top:4px">bukti masuk</div>
+  </div>
+  <div style="background:white;border:1px solid #E7E5E4;border-radius:14px;padding:1.25rem;border-left:4px solid #10B981">
+    <div style="font-size:11px;font-weight:600;color:#78716C;letter-spacing:1px;text-transform:uppercase;margin-bottom:.5rem">Selesai Bulan Ini</div>
+    <div style="font-size:28px;font-weight:700;color:#10B981">{{ stat_selesai|default:"0" }}</div>
+    <div style="font-size:12px;color:#78716C;margin-top:4px">pesanan</div>
+  </div>
+  <div style="background:white;border:1px solid #E7E5E4;border-radius:14px;padding:1.25rem;border-left:4px solid #C17F24">
+    <div style="font-size:11px;font-weight:600;color:#78716C;letter-spacing:1px;text-transform:uppercase;margin-bottom:.5rem">Total Saldo</div>
+    <div style="font-size:20px;font-weight:700;color:#C17F24">{{ saldo_admin|default:"Rp0" }}</div>
+    <div style="font-size:12px;color:#78716C;margin-top:4px">dompet admin</div>
+  </div>
+</div>
+
+<!-- LAPORAN PENJUALAN -->
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2rem">
+
+  <!-- Pendapatan per bulan -->
+  <div style="background:white;border:1px solid #E7E5E4;border-radius:14px;padding:1.5rem">
+    <div style="font-size:14px;font-weight:700;color:#1C1A16;margin-bottom:1.25rem">📈 Pendapatan 6 Bulan Terakhir</div>
+    {% for b in laporan_bulanan %}
+    <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem">
+      <div style="font-size:12px;color:#78716C;min-width:60px">{{ b.bulan }}</div>
+      <div style="flex:1;background:#F5F0E8;border-radius:6px;height:24px;overflow:hidden">
+        <div style="height:100%;background:#C17F24;border-radius:6px;width:{{ b.persen }}%;transition:width .3s;display:flex;align-items:center;padding-left:8px">
+          {% if b.persen > 20 %}<span style="font-size:11px;color:white;font-weight:600">{{ b.total_fmt }}</span>{% endif %}
+        </div>
+      </div>
+      {% if b.persen <= 20 %}<div style="font-size:11px;color:#78716C;min-width:80px">{{ b.total_fmt }}</div>{% endif %}
+    </div>
+    {% empty %}
+    <p style="color:#78716C;font-size:13px;text-align:center;padding:1rem">Belum ada data penjualan</p>
+    {% endfor %}
+  </div>
+
+  <!-- Produk terlaris -->
+  <div style="background:white;border:1px solid #E7E5E4;border-radius:14px;padding:1.5rem">
+    <div style="font-size:14px;font-weight:700;color:#1C1A16;margin-bottom:1.25rem">🏆 Produk Terlaris</div>
+    {% for p in produk_terlaris %}
+    <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.875rem;padding-bottom:.875rem;border-bottom:1px solid #F5F0E8">
+      <div style="font-size:22px;width:36px;text-align:center">{{ p.emoji }}</div>
+      <div style="flex:1">
+        <div style="font-size:13px;font-weight:600;color:#1C1A16">{{ p.nama }}</div>
+        <div style="font-size:12px;color:#78716C">Terjual {{ p.total_terjual }} pcs</div>
+      </div>
+      <div style="font-size:13px;font-weight:700;color:#C17F24">{{ p.pendapatan_fmt }}</div>
+    </div>
+    {% empty %}
+    <p style="color:#78716C;font-size:13px;text-align:center;padding:1rem">Belum ada data</p>
+    {% endfor %}
+  </div>
+
+</div>
+
+<!-- RINGKASAN STATUS -->
+<div style="background:white;border:1px solid #E7E5E4;border-radius:14px;padding:1.5rem;margin-bottom:2rem">
+  <div style="font-size:14px;font-weight:700;color:#1C1A16;margin-bottom:1.25rem">📊 Ringkasan Status Pesanan (Semua Waktu)</div>
+  <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:1rem">
+    {% for s in ringkasan_status %}
+    <div style="text-align:center;padding:1rem;background:#F8F7F4;border-radius:10px">
+      <div style="font-size:20px;margin-bottom:.25rem">{{ s.icon }}</div>
+      <div style="font-size:20px;font-weight:700;color:{{ s.color }}">{{ s.jumlah }}</div>
+      <div style="font-size:11px;color:#78716C;margin-top:2px">{{ s.label }}</div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- MENU CEPAT -->
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem">
+  <a href="/admin/toko/pesanan/" style="text-decoration:none;background:white;border:1px solid #E7E5E4;border-radius:14px;padding:1.5rem;display:flex;align-items:center;gap:1rem;color:#1C1A16;transition:all .2s" onmouseover="this.style.borderColor='#C17F24';this.style.background='#FDF3E0'" onmouseout="this.style.borderColor='#E7E5E4';this.style.background='white'">
+    <span style="font-size:36px">📦</span>
+    <div><div style="font-weight:700;font-size:15px">Daftar Pesanan</div><div style="font-size:12px;color:#78716C;margin-top:2px">Kelola & konfirmasi pesanan</div></div>
+  </a>
+  <a href="/admin/toko/produk/" style="text-decoration:none;background:white;border:1px solid #E7E5E4;border-radius:14px;padding:1.5rem;display:flex;align-items:center;gap:1rem;color:#1C1A16;transition:all .2s" onmouseover="this.style.borderColor='#C17F24';this.style.background='#FDF3E0'" onmouseout="this.style.borderColor='#E7E5E4';this.style.background='white'">
+    <span style="font-size:36px">🌾</span>
+    <div><div style="font-weight:700;font-size:15px">Daftar Produk</div><div style="font-size:12px;color:#78716C;margin-top:2px">Tambah & edit produk tepung</div></div>
+  </a>
+  <a href="/admin/toko/ulasan/" style="text-decoration:none;background:white;border:1px solid #E7E5E4;border-radius:14px;padding:1.5rem;display:flex;align-items:center;gap:1rem;color:#1C1A16;transition:all .2s" onmouseover="this.style.borderColor='#C17F24';this.style.background='#FDF3E0'" onmouseout="this.style.borderColor='#E7E5E4';this.style.background='white'">
+    <span style="font-size:36px">⭐</span>
+    <div><div style="font-weight:700;font-size:15px">Ulasan Pelanggan</div><div style="font-size:12px;color:#78716C;margin-top:2px">Lihat review produk</div></div>
+  </a>
+</div>
+
+{{ block.super }}
+{% endblock %}

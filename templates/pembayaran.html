@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pembayaran - Bramas Jaya</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#FDFCF8;--bg2:#F5F0E8;--text:#1C1A16;--text2:#7A7060;
+  --accent:#C17F24;--accent-light:#FDF3E0;--border:#E5DDD0;--white:#FFFFFF;
+  --success:#10B981;--font-head:'Playfair Display',serif;--font-body:'DM Sans',sans-serif;
+}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-height:100vh}
+nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 2rem}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo h1{font-family:var(--font-head);font-size:20px;color:var(--accent)}
+.nav-logo span{color:var(--text2);font-size:11px;display:block;letter-spacing:2px;font-weight:500;text-transform:uppercase;margin-top:-2px}
+.nav-back{font-size:13px;color:var(--text2);text-decoration:none;display:flex;align-items:center;gap:6px}
+.nav-back:hover{color:var(--accent)}
+.wrap{max-width:640px;margin:2.5rem auto;padding:0 1.5rem 3rem}
+.card{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:2rem;margin-bottom:1rem}
+.card-title{font-family:var(--font-head);font-size:24px;margin-bottom:.25rem}
+.card-sub{color:var(--text2);font-size:13px;margin-bottom:1.5rem}
+.order-info{background:var(--bg2);border-radius:12px;padding:1.25rem;margin-bottom:1.5rem}
+.order-row{display:flex;justify-content:space-between;font-size:14px;margin-bottom:.5rem;color:var(--text2)}
+.order-row:last-child{margin-bottom:0;font-weight:700;font-size:15px;color:var(--text);border-top:1px solid var(--border);padding-top:.5rem;margin-top:.5rem}
+.order-row span:last-child{color:var(--text);font-weight:500}
+.order-row:last-child span:last-child{color:var(--accent);font-size:17px}
+.metode-label{font-size:12px;font-weight:600;color:var(--text2);letter-spacing:1px;text-transform:uppercase;margin-bottom:1rem}
+.bank-card{border:1.5px solid var(--accent);border-radius:14px;padding:1.25rem 1.5rem;background:var(--accent-light);margin-bottom:1.25rem}
+.bank-card .bank-label{font-size:12px;color:var(--text2);font-weight:500;margin-bottom:.25rem}
+.bank-card .bank-name{font-size:14px;font-weight:600;color:var(--text);margin-bottom:.75rem}
+.bank-card .bank-num{font-size:26px;font-weight:700;color:var(--accent);letter-spacing:3px;margin-bottom:.25rem;font-family:monospace}
+.bank-card .bank-owner{font-size:13px;color:var(--text2)}
+.copy-btn{display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:white;border:none;border-radius:7px;padding:7px 14px;font-size:12px;font-weight:600;cursor:pointer;font-family:var(--font-body);margin-top:.75rem;transition:all .2s}
+.copy-btn:hover{background:#a86b1a}
+.copy-btn.copied{background:var(--success)}
+.qris-box{text-align:center;padding:1.5rem;border:1.5px dashed var(--border);border-radius:14px;margin-bottom:1.25rem;background:var(--bg2)}
+.qris-box .qris-num{font-size:20px;font-weight:700;color:var(--accent);letter-spacing:2px;margin-bottom:.5rem;font-family:monospace}
+.cod-box{background:#F0FDF4;border:1.5px solid #86EFAC;border-radius:14px;padding:1.25rem 1.5rem;margin-bottom:1.25rem}
+.cod-box h4{font-size:14px;font-weight:700;color:#065F46;margin-bottom:.5rem}
+.cod-box p{font-size:13px;color:#166534;line-height:1.6}
+.cod-box ul{margin:.5rem 0 0 1rem;font-size:13px;color:#166534;line-height:1.8}
+.status-badge{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:100px;font-size:12px;font-weight:600;margin-bottom:1.25rem}
+.badge-waiting{background:#FEF9EC;color:#B45309;border:1.5px solid #FDE68A}
+.badge-verified{background:#ECFDF5;color:#065F46;border:1.5px solid #6EE7B7}
+.badge-dot{width:7px;height:7px;border-radius:50%;display:inline-block}
+.badge-waiting .badge-dot{background:#F59E0B}
+.badge-verified .badge-dot{background:#10B981}
+.upload-label{font-size:13px;font-weight:500;margin-bottom:.5rem;display:block;color:var(--text)}
+.file-wrap{border:2px dashed var(--border);border-radius:12px;padding:2rem;text-align:center;cursor:pointer;transition:all .2s;position:relative;background:var(--bg)}
+.file-wrap:hover{border-color:var(--accent);background:var(--accent-light)}
+.file-wrap input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.file-wrap .icon{font-size:30px;margin-bottom:.5rem}
+.file-wrap p{font-size:13px;color:var(--text2)}
+.file-name{font-size:13px;font-weight:600;color:var(--accent);margin-top:.5rem;display:none}
+.submit-btn{width:100%;background:var(--accent);color:white;border:none;border-radius:10px;padding:14px;font-size:15px;font-weight:600;cursor:pointer;font-family:var(--font-body);transition:all .2s;margin-top:1rem}
+.submit-btn:hover{background:#a86b1a}
+.submit-btn:disabled{background:#D1D5DB;cursor:not-allowed}
+.success-state{text-align:center;padding:1rem 0}
+.success-state .big-icon{font-size:52px;margin-bottom:.75rem}
+.success-state h3{font-family:var(--font-head);font-size:20px;color:#065F46;margin-bottom:.5rem}
+.success-alert{background:#ECFDF5;border:1.5px solid #6EE7B7;border-radius:12px;padding:.875rem 1.25rem;font-size:13px;color:#065F46;line-height:1.6;text-align:left;margin-bottom:1.25rem}
+.verified-state{text-align:center;padding:1rem 0}
+.verified-state .big-icon{font-size:52px;margin-bottom:.75rem}
+.verified-state h3{font-family:var(--font-head);font-size:20px;color:var(--accent);margin-bottom:.5rem}
+.verified-alert{background:var(--accent-light);border:1.5px solid #F0D49A;border-radius:12px;padding:.875rem 1.25rem;font-size:13px;color:#92400E;line-height:1.6;text-align:left;margin-bottom:1.25rem}
+.divider{border:none;border-top:1px solid var(--border);margin:1.25rem 0}
+.toast{position:fixed;bottom:2rem;right:2rem;border-radius:12px;padding:14px 20px;font-size:14px;font-weight:500;z-index:9999;transform:translateY(20px);opacity:0;transition:all .3s;pointer-events:none;font-family:var(--font-body);max-width:380px;line-height:1.5}
+.toast.show{transform:translateY(0);opacity:1}
+.toast-success{background:#065F46;color:white}
+.toast-info{background:#1C1A16;color:white}
+
+@media(max-width:768px){
+  nav{padding:0 1rem}
+  .nav-links{display:none}
+  .container{padding:1.25rem 1rem}
+  h1.page-title{font-size:22px}
+  .layout{grid-template-columns:1fr !important;display:flex !important;flex-direction:column}
+  .toast{bottom:1rem;left:1rem;right:1rem;max-width:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <h1>Bramas Jaya</h1>
+      <span>Toko Tepung Serba Guna</span>
+    </div>
+    <a href="/" class="nav-back">← Kembali ke Beranda</a>
+  </div>
+</nav>
+
+<div class="toast" id="toast"></div>
+
+<div class="wrap">
+  <div class="card">
+    <div class="card-title">💳 Pembayaran</div>
+    <div class="card-sub">Pesanan #{{ pesanan.nomor_pesanan }}</div>
+
+    <div id="status-badge-wrap">
+      {% if pesanan.status == 'dibayar' %}
+        <span class="status-badge badge-waiting">
+          <span class="badge-dot"></span> Menunggu Verifikasi Admin
+        </span>
+      {% elif pesanan.status == 'diproses' or pesanan.status == 'dikirim' or pesanan.status == 'selesai' %}
+        <span class="status-badge badge-verified">
+          <span class="badge-dot"></span> Pembayaran Diterima ✓
+        </span>
+      {% endif %}
+    </div>
+
+    <div class="order-info">
+      <div class="order-row"><span>No. Pesanan</span><span>#{{ pesanan.nomor_pesanan }}</span></div>
+      <div class="order-row"><span>Nama Penerima</span><span>{{ pesanan.nama_penerima }}</span></div>
+      <div class="order-row"><span>Metode Pembayaran</span><span>{{ pesanan.metode_pembayaran }}</span></div>
+      <div class="order-row"><span>Total Pembayaran</span><span>Rp{{ pesanan.total|floatformat:"g" }}</span></div>
+    </div>
+
+    {% if metode == 'Transfer Bank' %}
+      <div class="metode-label">📋 Instruksi Transfer Bank</div>
+      {% if rekening_transfer %}
+        <div class="bank-card">
+          <div class="bank-label">Transfer ke rekening berikut</div>
+          <div class="bank-name">{{ rekening_transfer.nama_bank }}</div>
+          <div class="bank-num" id="nomor-rek">{{ rekening_transfer.nomor }}</div>
+          <div class="bank-owner">a.n. {{ rekening_transfer.atas_nama }}</div>
+          <button class="copy-btn" id="copy-btn" onclick="copyRek()">📋 Salin Nomor Rekening</button>
+        </div>
+      {% else %}
+        <div class="bank-card">
+          <div class="bank-label">Transfer ke rekening berikut</div>
+          <div class="bank-name">Bank BCA</div>
+          <div class="bank-num">—</div>
+          <div class="bank-owner" style="color:#EF4444">⚠️ Admin belum mengatur rekening. Hubungi toko.</div>
+        </div>
+      {% endif %}
+      <p style="font-size:12px;color:var(--text2);margin-bottom:1.25rem;line-height:1.6">
+        ℹ️ Transfer sesuai total pesanan, lalu upload bukti transfer di bawah.
+      </p>
+
+    {% elif metode == 'QRIS' %}
+      <div class="metode-label">📱 Instruksi Pembayaran QRIS</div>
+      {% if rekening_qris %}
+        <div class="qris-box">
+          {% if rekening_qris.qr_code %}
+            <img src="{{ rekening_qris.qr_code.url }}" style="max-width:220px;border-radius:10px;margin-bottom:1rem">
+          {% endif %}
+          <div style="font-size:12px;color:var(--text2);margin-bottom:.5rem">Nomor QRIS / ID Merchant</div>
+          <div class="qris-num">{{ rekening_qris.nomor }}</div>
+          <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:.5rem">{{ rekening_qris.nama_bank }}</div>
+          <div style="font-size:12px;color:var(--text2)">a.n. {{ rekening_qris.atas_nama }}</div>
+        </div>
+      {% else %}
+        <div class="qris-box">
+          <p style="color:#EF4444">⚠️ Admin belum mengatur QRIS. Hubungi toko.</p>
+        </div>
+      {% endif %}
+      <p style="font-size:12px;color:var(--text2);margin-bottom:1.25rem;line-height:1.6">
+        ℹ️ Scan QR Code atau masukkan nomor QRIS di aplikasi mobile banking Anda.
+      </p>
+
+    {% elif metode == 'COD' %}
+      <div class="metode-label">🚚 Instruksi COD (Bayar di Tempat)</div>
+      <div class="cod-box">
+        <h4>✅ Pesanan Anda dikonfirmasi!</h4>
+        <p>Anda memilih metode COD. Pembayaran dilakukan saat barang tiba di alamat Anda.</p>
+        <ul>
+          <li>Siapkan uang tunai sesuai total: <strong>Rp{{ pesanan.total|floatformat:"g" }}</strong></li>
+          <li>Pastikan ada orang di alamat saat pengiriman</li>
+          <li>Kurir akan menghubungi Anda sebelum tiba</li>
+        </ul>
+      </div>
+    {% endif %}
+
+    <div class="divider"></div>
+
+    {% if pesanan.status == 'menunggu' %}
+      {% if metode == 'COD' %}
+        <div id="upload-form">
+          <button class="submit-btn" id="submit-btn" onclick="submitCOD()">
+            ✅ Konfirmasi Pesanan COD
+          </button>
+        </div>
+      {% else %}
+        <div id="upload-form">
+          <label class="upload-label">📎 Upload Bukti Pembayaran</label>
+          <div class="file-wrap" id="file-wrap">
+            <input type="file" id="bukti-file" accept="image/*" onchange="previewFile(this)">
+            <div class="icon">📁</div>
+            <p>Klik atau seret file ke sini</p>
+            <p style="font-size:11px;margin-top:4px;color:#aaa">JPG, PNG, JPEG — maks. 5MB</p>
+            <div class="file-name" id="file-name"></div>
+          </div>
+          <button class="submit-btn" id="submit-btn" onclick="submitBukti()">
+            Kirim Bukti Pembayaran
+          </button>
+        </div>
+      {% endif %}
+
+    {% elif pesanan.status == 'dibayar' %}
+      <div class="success-state">
+        <div class="big-icon">⏳</div>
+        <h3>Bukti Terkirim!</h3>
+        <div class="success-alert">
+          🟢 Berhasil! Bukti pembayaran Anda telah terkirim. Admin akan segera memeriksa mutasi rekening. Silakan cek halaman ini secara berkala.
+        </div>
+        <span class="status-badge badge-waiting">
+          <span class="badge-dot"></span> Sedang Diperiksa Admin
+        </span>
+      </div>
+
+    {% else %}
+      <div class="verified-state">
+        <div class="big-icon">🎉</div>
+        <h3>Pembayaran Terverifikasi!</h3>
+        <div class="verified-alert">
+          🎉 Terima kasih! Pembayaran Anda telah dikonfirmasi oleh admin. Pesanan Anda kini sedang diproses.
+        </div>
+        <span class="status-badge badge-verified">
+          <span class="badge-dot"></span> Pembayaran Diterima ✓ Lunas
+        </span>
+      </div>
+    {% endif %}
+
+    <div style="margin-top:1.5rem;text-align:center">
+      <a href="/profil/" style="font-size:13px;color:var(--text2);text-decoration:none">📦 Lihat Riwayat Pesanan</a>
+      &nbsp;·&nbsp;
+      <a href="/" style="font-size:13px;color:var(--text2);text-decoration:none">← Beranda</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const pesananId = {{ pesanan.id }};
+const csrfToken = '{{ csrf_token }}';
+const metode = '{{ metode }}';
+
+function showToast(msg, cls){
+  cls = cls || 'toast-info';
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show ' + cls;
+  setTimeout(function(){ t.classList.remove('show'); }, 4000);
+}
+
+function copyRek(){
+  var nomor = document.getElementById('nomor-rek').textContent.trim();
+  navigator.clipboard.writeText(nomor).then(function(){
+    var btn = document.getElementById('copy-btn');
+    btn.textContent = '✓ Tersalin!';
+    btn.classList.add('copied');
+    setTimeout(function(){ btn.textContent='📋 Salin Nomor Rekening'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+function previewFile(input){
+  var fn = document.getElementById('file-name');
+  if(input.files && input.files[0]){
+    fn.textContent = '✓ ' + input.files[0].name;
+    fn.style.display = 'block';
+    document.getElementById('file-wrap').style.borderColor = '#C17F24';
+    document.getElementById('file-wrap').style.background = '#FDF3E0';
+  }
+}
+
+async function submitBukti(){
+  var file = document.getElementById('bukti-file').files[0];
+  if(!file){ showToast('⚠️ Pilih file bukti pembayaran terlebih dahulu'); return; }
+  var btn = document.getElementById('submit-btn');
+  btn.disabled = true; btn.textContent = 'Mengirim...';
+  var fd = new FormData();
+  fd.append('bukti', file);
+  fd.append('csrfmiddlewaretoken', csrfToken);
+  try {
+    var res = await fetch('/pembayaran/' + pesananId + '/', {method:'POST', body:fd});
+    if(res.redirected || res.ok){
+      document.getElementById('upload-form').style.display = 'none';
+      document.getElementById('status-badge-wrap').innerHTML =
+        '<span class="status-badge badge-waiting"><span class="badge-dot"></span> Menunggu Verifikasi Admin</span>';
+      var div = document.createElement('div');
+      div.className = 'success-state';
+      div.innerHTML =
+        '<div class="big-icon">⏳</div>' +
+        '<h3>Bukti Terkirim!</h3>' +
+        '<div class="success-alert">🟢 Berhasil! Bukti pembayaran Anda telah terkirim. Admin akan segera memeriksa. Silakan cek halaman ini secara berkala.</div>' +
+        '<span class="status-badge badge-waiting"><span class="badge-dot"></span> Sedang Diperiksa Admin</span>';
+      document.getElementById('upload-form').insertAdjacentElement('afterend', div);
+      showToast('🟢 Bukti pembayaran berhasil dikirim!', 'toast-success');
+    }
+  } catch(e) {
+    btn.disabled = false; btn.textContent = 'Kirim Bukti Pembayaran';
+    showToast('Terjadi kesalahan, coba lagi');
+  }
+}
+
+async function submitCOD(){
+  var btn = document.getElementById('submit-btn');
+  btn.disabled = true; btn.textContent = 'Memproses...';
+  var fd = new FormData();
+  fd.append('cod_confirm', '1');
+  fd.append('csrfmiddlewaretoken', csrfToken);
+  try {
+    var res = await fetch('/pembayaran/' + pesananId + '/', {method:'POST', body:fd});
+    if(res.redirected || res.ok){
+      window.location.href = '/sukses/' + pesananId + '/';
+    }
+  } catch(e) {
+    btn.disabled = false; btn.textContent = '✅ Konfirmasi Pesanan COD';
+    showToast('Terjadi kesalahan, coba lagi');
+  }
+}
+</script>
+
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/6281246020417?text=Halo%20Bramas%20Jaya%2C%20saya%20butuh%20bantuan%20pembayaran." target="_blank"
+   style="position:fixed;bottom:1.75rem;right:1.75rem;background:#25D366;color:white;border-radius:50%;width:54px;height:54px;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 4px 20px rgba(37,211,102,.45);z-index:998;text-decoration:none;transition:transform .2s"
+   onmouseover="this.style.transform='scale(1.12)'" onmouseout="this.style.transform='scale(1)'" title="Chat WhatsApp">💬</a>
+
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - Bramas Jaya</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:linear-gradient(135deg,#5C3D11,#C17F24);min-height:100vh;display:flex;align-items:center;justify-content:center}
+.card{background:white;border-radius:20px;padding:2.5rem;width:100%;max-width:420px;box-shadow:0 20px 60px rgba(0,0,0,0.2)}
+.logo{text-align:center;margin-bottom:2rem}
+.logo h1{font-family:'Playfair Display',serif;font-size:28px;color:#C17F24}
+.logo p{color:#7A7060;font-size:13px;margin-top:4px}
+.form-group{margin-bottom:1.25rem}
+label{display:block;font-size:13px;font-weight:500;color:#1C1A16;margin-bottom:6px}
+input{width:100%;padding:12px 16px;border:1px solid #E5DDD0;border-radius:10px;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;transition:border .2s}
+input:focus{border-color:#C17F24}
+.btn{width:100%;background:#C17F24;color:white;border:none;border-radius:10px;padding:14px;font-size:15px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:.5rem;transition:all .2s}
+.btn:hover{background:#a86b1a}
+.error{background:#FEE2E2;color:#C0392B;border-radius:8px;padding:10px 14px;font-size:13px;margin-bottom:1rem;text-align:center}
+.emoji{font-size:48px;margin-bottom:.5rem}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="logo">
+    <div class="emoji">🌾</div>
+    <h1>Bramas Jaya</h1>
+    <p>Tepung Serba Guna</p>
+  </div>
+  {% if error %}
+  <div class="error">{{ error }}</div>
+  {% endif %}
+  <form method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+      <label>Username</label>
+      <input type="text" name="username" placeholder="Masukkan username" required autofocus>
+    </div>
+    <div class="form-group">
+      <label>Kata Sandi</label>
+      <input type="password" name="password" placeholder="Masukkan kata sandi" required>
+    </div>
+    <button type="submit" class="btn">Masuk →</button>
+  </form>
+</div>
+<!-- ===== MODAL LOGIN ===== -->
+<style>
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9999;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+.modal-overlay.open{display:flex}
+.modal-box{background:white;border-radius:20px;padding:2.5rem;width:100%;max-width:420px;margin:1rem;box-shadow:0 24px 64px rgba(0,0,0,.25);animation:modalIn .25s ease;position:relative}
+@keyframes modalIn{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+.modal-logo{text-align:center;margin-bottom:1.75rem}
+.modal-logo-icon{font-size:44px;margin-bottom:.5rem}
+.modal-logo h2{font-family:'Playfair Display',serif;font-size:26px;color:#C17F24}
+.modal-logo p{color:#7A7060;font-size:13px;margin-top:4px}
+.modal-tabs{display:flex;border-bottom:2px solid #F0EAE0;margin-bottom:1.5rem}
+.modal-tab{flex:1;text-align:center;padding:10px;font-size:13px;font-weight:600;cursor:pointer;color:#7A7060;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .2s}
+.modal-tab.active{color:#C17F24;border-bottom-color:#C17F24}
+.modal-panel{display:none}.modal-panel.active{display:block}
+.modal-fg{margin-bottom:1.1rem}
+.modal-fg label{display:block;font-size:13px;font-weight:500;color:#1C1A16;margin-bottom:5px}
+.modal-fg input,.modal-fg select{width:100%;padding:11px 14px;border:1.5px solid #E5DDD0;border-radius:10px;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;transition:border .2s;background:white}
+.modal-fg input:focus{border-color:#C17F24}
+.modal-btn{width:100%;background:#C17F24;color:white;border:none;border-radius:10px;padding:13px;font-size:15px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:.25rem;transition:all .2s}
+.modal-btn:hover{background:#a86b1a}
+.modal-divider{display:flex;align-items:center;gap:.75rem;color:#B0A090;font-size:12px;margin:1rem 0}
+.modal-divider::before,.modal-divider::after{content:'';flex:1;height:1px;background:#E5DDD0}
+.modal-admin-btn{width:100%;background:#1C1A16;color:white;border:none;border-radius:10px;padding:12px;font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px}
+.modal-admin-btn:hover{background:#333}
+.modal-error{background:#FEE2E2;color:#C0392B;border-radius:8px;padding:9px 13px;font-size:13px;margin-bottom:1rem;text-align:center;display:none}
+.modal-close{position:absolute;top:14px;right:18px;background:none;border:none;font-size:22px;cursor:pointer;color:#B0A090;line-height:1}
+</style>
+
+<div class="modal-overlay" id="loginModal" onclick="closeModalOutside(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeLoginModal()">×</button>
+    <div class="modal-logo">
+      <div class="modal-logo-icon">🌾</div>
+      <h2>Bramas Jaya</h2>
+      <p>Masuk atau daftar untuk melanjutkan</p>
+    </div>
+    <div class="modal-tabs">
+      <div class="modal-tab active" onclick="switchTab('masuk')">Masuk</div>
+      <div class="modal-tab" onclick="switchTab('daftar')">Daftar</div>
+    </div>
+
+    <!-- Panel Masuk -->
+    <div class="modal-panel active" id="panel-masuk">
+      <div class="modal-error" id="login-error"></div>
+      <div class="modal-fg"><label>Username</label><input type="text" id="m-username" placeholder="Masukkan username" autocomplete="username"></div>
+      <div class="modal-fg"><label>Kata Sandi</label><input type="password" id="m-password" placeholder="Masukkan kata sandi" autocomplete="current-password" onkeydown="if(event.key==='Enter')submitLogin()"></div>
+      <button class="modal-btn" onclick="submitLogin()">Masuk →</button>
+      <div class="modal-divider">atau</div>
+      <button class="modal-admin-btn" onclick="submitLoginAdmin()">🔐 Masuk sebagai Admin</button>
+    </div>
+
+    <!-- Panel Daftar -->
+    <div class="modal-panel" id="panel-daftar">
+      <div class="modal-error" id="reg-error"></div>
+      <div class="modal-fg"><label>Nama Lengkap</label><input type="text" id="m-reg-name" placeholder="Nama Anda"></div>
+      <div class="modal-fg"><label>Email</label><input type="email" id="m-reg-email" placeholder="nama@email.com"></div>
+      <div class="modal-fg"><label>No. Telepon</label><input type="tel" id="m-reg-phone" placeholder="08xxxxxxxxxx"></div>
+      <div class="modal-fg"><label>Jenis Pelanggan</label>
+        <select id="m-reg-type"><option>Pembeli Rumahan</option><option>Pemilik Bakeri / Kue</option><option>Katering</option><option>Restoran</option><option>Reseller Tepung</option></select>
+      </div>
+      <div class="modal-fg"><label>Kata Sandi</label><input type="password" id="m-reg-pass" placeholder="Min. 8 karakter"></div>
+      <button class="modal-btn" onclick="submitRegister()">Daftar Sekarang</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function openLoginModal(){document.getElementById('loginModal').classList.add('open');document.body.style.overflow='hidden'}
+function closeLoginModal(){document.getElementById('loginModal').classList.remove('open');document.body.style.overflow=''}
+function closeModalOutside(e){if(e.target===document.getElementById('loginModal'))closeLoginModal()}
+function getCookie(name){let v=null;document.cookie.split(';').forEach(c=>{c=c.trim();if(c.startsWith(name+'='))v=decodeURIComponent(c.slice(name.length+1));});return v;}
+function switchTab(tab){
+  document.querySelectorAll('.modal-tab').forEach((t,i)=>t.classList.toggle('active',i===(tab==='masuk'?0:1)));
+  document.getElementById('panel-masuk').classList.toggle('active',tab==='masuk');
+  document.getElementById('panel-daftar').classList.toggle('active',tab==='daftar');
+}
+function showModalError(id,msg){const el=document.getElementById(id);el.textContent=msg;el.style.display='block'}
+function hideModalErrors(){document.querySelectorAll('.modal-error').forEach(e=>{e.style.display='none'})}
+
+async function submitLogin(){
+  hideModalErrors();
+  const username=document.getElementById('m-username').value.trim();
+  const password=document.getElementById('m-password').value;
+  if(!username||!password){showModalError('login-error','Username dan kata sandi wajib diisi');return}
+  const fd=new FormData();
+  fd.append('username',username);
+  fd.append('password',password);
+  fd.append('csrfmiddlewaretoken',getCookie('csrftoken'));
+  try{
+    const res=await fetch('/login/',{method:'POST',body:fd,headers:{'X-Requested-With':'XMLHttpRequest','Accept':'application/json'},credentials:'same-origin'});
+    const data=await res.json();
+    if(data.success){
+      closeLoginModal();
+      if(data.redirect==='/admin/'){window.location.href='/admin/';}
+      else{
+        loggedIn=true;userName=username;
+        updateAuthUIServer(username);
+        showToast('✓ Selamat datang, '+username+'!');
+      }
+    }else{showModalError('login-error',data.error||'Login gagal')}
+  }catch(e){showModalError('login-error','Terjadi kesalahan, coba lagi')}
+}
+
+function submitLoginAdmin(){
+  closeLoginModal();
+  window.location.href='/admin/login/?next=/admin/';
+}
+
+function submitRegister(){
+  hideModalErrors();
+  const n=document.getElementById('m-reg-name').value.trim();
+  const e=document.getElementById('m-reg-email').value.trim();
+  const ph=document.getElementById('m-reg-phone').value.trim();
+  const p=document.getElementById('m-reg-pass').value;
+  if(!n||!e||!ph||!p){showModalError('reg-error','Semua kolom wajib diisi');return}
+  if(p.length<8){showModalError('reg-error','Kata sandi minimal 8 karakter');return}
+  loggedIn=true;userName=n.split(' ')[0];
+  updateAuthUIServer(n.split(' ')[0]);
+  closeLoginModal();
+  showToast('✓ Selamat datang, '+n.split(' ')[0]+'!');
+}
+
+function updateAuthUIServer(name){
+  const area=document.getElementById('nav-auth-area');
+  area.innerHTML=`<span class="user-greeting">Hai, ${name}</span> <a href="/logout/" class="logout-btn">Keluar</a>`;
+}
+
+// Override requireLogin agar pakai modal
+function requireLogin(){openLoginModal()}
+</script>
+</body>
+</html>

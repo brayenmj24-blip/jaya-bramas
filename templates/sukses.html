@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pesanan Berhasil - Bramas Jaya</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:linear-gradient(135deg,#FDFCF8,#F5F0E8);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:1.5rem}
+.card{background:white;border-radius:24px;padding:2.5rem 2rem;max-width:480px;width:100%;box-shadow:0 8px 40px rgba(0,0,0,.08);border:1px solid #E5DDD0}
+.icon-wrap{width:80px;height:80px;background:#ECFDF5;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-size:38px;animation:pop .5s cubic-bezier(.16,1,.3,1)}
+@keyframes pop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+h1{font-family:'Playfair Display',serif;font-size:26px;color:#1C1A16;margin-bottom:.4rem;text-align:center}
+.subtitle{color:#7A7060;font-size:14px;text-align:center;line-height:1.6;margin-bottom:1.5rem}
+.nomor-box{background:#FDF3E0;border:1px solid #F0D49A;border-radius:12px;padding:1rem 1.25rem;margin-bottom:1.5rem;text-align:center}
+.nomor-label{font-size:12px;color:#92400E;font-weight:500;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
+.nomor-val{font-family:'Playfair Display',serif;font-size:22px;color:#C17F24;font-weight:700}
+.steps{margin-bottom:1.75rem;border:1px solid #E5DDD0;border-radius:12px;overflow:hidden}
+.step{display:flex;gap:.875rem;align-items:flex-start;padding:.9rem 1rem;background:white}
+.step+.step{border-top:1px solid #F5F0E8}
+.step-num{width:28px;height:28px;min-width:28px;background:#C17F24;color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
+.step-text{font-size:13px;color:#1C1A16;line-height:1.55;padding-top:4px}
+.btn-group{display:flex;flex-direction:column;gap:.75rem}
+.btn{border-radius:10px;padding:13px;font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;text-decoration:none;display:block;text-align:center;transition:all .2s}
+.btn-primary{background:#C17F24;color:white;border:none}
+.btn-primary:hover{background:#a86b1a;transform:translateY(-1px)}
+.btn-outline{background:white;color:#C17F24;border:1.5px solid #C17F24}
+.btn-outline:hover{background:#FDF3E0}
+.wa-link{display:flex;align-items:center;justify-content:center;gap:.5rem;font-size:13px;color:#25D366;text-decoration:none;margin-top:1.1rem;font-weight:500}
+.wa-link:hover{opacity:.8}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="icon-wrap">✅</div>
+  <h1>Pesanan Diterima!</h1>
+  <p class="subtitle">Terima kasih sudah berbelanja di <strong>Bramas Jaya</strong>.<br>Pesanan Anda sedang kami proses dengan sepenuh hati.</p>
+
+  <div class="nomor-box">
+    <div class="nomor-label">Nomor Pesanan</div>
+    <div class="nomor-val">#{{ pesanan.nomor_pesanan }}</div>
+  </div>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-text">Admin memverifikasi pembayaran Anda dalam <strong>1×24 jam</strong> hari kerja</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-text">Pesanan dikemas dan dikirim sesuai metode pengiriman yang dipilih</div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-text">Pantau status pesanan di <strong>Profil → Pesanan Saya</strong> kapan saja</div>
+    </div>
+  </div>
+
+  <div class="btn-group">
+    <a href="/profil/" class="btn btn-primary">📦 Lihat Status Pesanan</a>
+    <a href="/home/" class="btn btn-outline">🌾 Lanjut Belanja</a>
+  </div>
+
+  <a href="https://wa.me/6281246020417?text=Halo%2C%20saya%20mau%20tanya%20pesanan%20no%20{{ pesanan.nomor_pesanan }}" target="_blank" class="wa-link">
+    💬 Butuh bantuan? Chat WhatsApp kami
+  </a>
+</div>
+</body>
+</html>

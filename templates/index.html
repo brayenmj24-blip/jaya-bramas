@@ -1,0 +1,1660 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Bramas Jaya - Toko tepung terpercaya di Semarang. Jual Tepung Terigu, Tepung Beras, Tepung Tapioka, dan Tepung Spesial berkualitas. Pesan sekarang, pengiriman cepat.">
+<meta name="keywords" content="tepung terigu, tepung beras, tepung tapioka, tepung spesial, beli tepung online, bramas jaya, toko tepung semarang">
+<meta property="og:title" content="Bramas Jaya - Tepung Serba Guna">
+<meta property="og:description" content="Toko tepung berkualitas untuk kebutuhan dapur dan usaha Anda. Produk segar langsung dari penggilingan.">
+<meta property="og:type" content="website">
+<meta name="robots" content="index, follow">
+<title>BRAMAS JAYA - Tepung Serba Guna</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#FDFCF8;--bg2:#F5F0E8;--text:#1C1A16;--text2:#7A7060;
+  --accent:#C17F24;--accent-light:#FDF3E0;--accent2:#F0D49A;
+  --border:#E5DDD0;--white:#FFFFFF;--danger:#C0392B;
+  --font-head:'Playfair Display',serif;--font-body:'DM Sans',sans-serif;
+}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-height:100vh}
+
+nav{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000;padding:0 2rem}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{cursor:pointer}
+.nav-logo h1{font-family:var(--font-head);font-size:20px;color:var(--accent);letter-spacing:-0.3px}
+.nav-logo span{color:var(--text2);font-size:11px;font-family:var(--font-body);display:block;letter-spacing:2px;font-weight:500;text-transform:uppercase;margin-top:-2px}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{text-decoration:none;color:var(--text2);font-size:14px;font-weight:500;cursor:pointer;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--accent)}
+.nav-actions{display:flex;align-items:center;gap:.75rem}
+.nav-cart{background:var(--accent);color:white;border:none;border-radius:8px;padding:8px 16px;font-size:13px;font-weight:500;cursor:pointer;font-family:var(--font-body);display:flex;align-items:center;gap:6px;transition:all .2s}
+.nav-cart:hover{background:#a86b1a}
+.cart-badge{background:white;color:var(--accent);border-radius:50%;width:18px;height:18px;font-size:11px;font-weight:600;display:inline-flex;align-items:center;justify-content:center}
+.nav-user{background:none;border:1px solid var(--border);border-radius:8px;padding:8px 14px;font-size:13px;font-weight:500;cursor:pointer;font-family:var(--font-body);color:var(--text);transition:all .2s}
+.nav-user:hover{border-color:var(--accent);color:var(--accent)}
+
+.page{display:none;opacity:0}
+.page.active{display:block;animation:bjPageIn .4s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes bjPageIn{
+  from{opacity:0;transform:scale(.985) translateY(10px)}
+  to{opacity:1;transform:scale(1) translateY(0)}
+}
+@keyframes bjFadeOut{
+  from{opacity:1;transform:scale(1) translateY(0)}
+  to{opacity:0;transform:scale(.99) translateY(-4px)}
+}
+
+.hero{background:linear-gradient(135deg,#5C3D11 0%,#8B5E1A 45%,#C17F24 100%);color:white;padding:5rem 2rem;text-align:center;position:relative;overflow:hidden}
+.hero::after{content:'🌾';position:absolute;right:5%;top:50%;transform:translateY(-50%);font-size:180px;opacity:.08;pointer-events:none}
+.hero::before{content:'🌾';position:absolute;left:3%;top:50%;transform:translateY(-50%) scaleX(-1);font-size:180px;opacity:.08;pointer-events:none}
+.hero-inner{position:relative;max-width:680px;margin:0 auto}
+.hero-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:100px;padding:6px 20px;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;font-weight:500;margin-bottom:1.5rem}
+.hero h1{font-family:var(--font-head);font-size:50px;line-height:1.1;margin-bottom:1rem;letter-spacing:-1px}
+.hero p{font-size:17px;opacity:.82;margin-bottom:2.5rem;line-height:1.65;font-weight:300}
+.hero-cta{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:white;color:var(--accent);border:none;border-radius:10px;padding:13px 28px;font-size:15px;font-weight:600;cursor:pointer;font-family:var(--font-body);transition:all .2s}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,0,0,.2)}
+.btn-outline{background:transparent;color:white;border:1.5px solid rgba(255,255,255,.4);border-radius:10px;padding:13px 28px;font-size:15px;font-weight:500;cursor:pointer;font-family:var(--font-body);transition:all .2s}
+.btn-outline:hover{border-color:white;background:rgba(255,255,255,.1)}
+.hero-stats{display:flex;gap:3rem;justify-content:center;margin-top:4rem;padding-top:3rem;border-top:1px solid rgba(255,255,255,.15)}
+.hero-stat h3{font-size:28px;font-weight:600;font-family:var(--font-head)}
+.hero-stat p{font-size:13px;opacity:.6;margin-top:4px}
+
+.section{padding:4rem 2rem;max-width:1200px;margin:0 auto}
+.section-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:2rem}
+.section-head h2{font-family:var(--font-head);font-size:28px}
+.section-head a{font-size:14px;color:var(--accent);text-decoration:none;cursor:pointer;font-weight:500}
+
+.categories{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.cat-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.5rem 1.25rem;cursor:pointer;transition:all .25s;text-align:center}
+.cat-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 24px rgba(193,127,36,.12)}
+.cat-icon{font-size:36px;margin-bottom:.75rem}
+.cat-card h3{font-size:15px;font-weight:600;color:var(--text);margin-bottom:4px}
+.cat-card p{font-size:12px;color:var(--text2)}
+
+.products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.product-card{background:var(--white);border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:all .3s cubic-bezier(.16,1,.3,1)}
+.product-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(193,127,36,.15);border-color:var(--accent2)}
+.product-img{height:210px;display:flex;align-items:center;justify-content:center;font-size:68px;position:relative;padding:18px;overflow:hidden}
+.product-img::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 30%,rgba(255,255,255,.4),transparent 70%);pointer-events:none}
+.product-img img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;filter:drop-shadow(0 8px 16px rgba(0,0,0,.12));transition:transform .35s cubic-bezier(.16,1,.3,1)}
+.product-card:hover .product-img img{transform:scale(1.05) translateY(-2px)}
+.product-badge{position:absolute;top:12px;left:12px;background:var(--accent);color:white;border-radius:6px;padding:3px 10px;font-size:11px;font-weight:600}
+.product-badge.sale{background:#E63946}
+.product-badge.new{background:#2D6A4F}
+.product-info{padding:1.1rem 1.25rem 1.35rem}
+.product-info h3{font-size:15.5px;font-weight:700;margin-bottom:4px;color:var(--text);letter-spacing:-.2px}
+.product-info .desc{font-size:12px;color:var(--text2);margin-bottom:.75rem;line-height:1.5}
+.product-weight{display:inline-block;background:var(--bg2);border-radius:5px;padding:2px 8px;font-size:11px;color:var(--text2);margin-bottom:.6rem;font-weight:500}
+.product-footer{display:flex;align-items:center;justify-content:space-between}
+.price{font-size:17px;font-weight:700;color:var(--accent)}
+.price-old{font-size:12px;color:var(--text2);text-decoration:line-through;margin-left:6px}
+.add-btn{background:var(--accent);color:white;border:none;border-radius:9px;padding:9px 16px;font-size:12px;font-weight:600;cursor:pointer;font-family:var(--font-body);transition:all .25s cubic-bezier(.16,1,.3,1);box-shadow:0 2px 8px rgba(193,127,36,.25)}
+.add-btn:hover{background:#a86b1a;transform:translateY(-2px);box-shadow:0 6px 16px rgba(193,127,36,.35)}
+.add-btn:active{transform:scale(.96)}
+.add-btn:disabled{background:#D1D5DB;cursor:not-allowed;color:#6B7280}
+
+.filter-bar{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.filter-btn{border:1px solid var(--border);border-radius:100px;padding:7px 16px;font-size:13px;font-weight:500;cursor:pointer;background:var(--white);color:var(--text2);font-family:var(--font-body);transition:all .2s}
+.filter-btn:hover{border-color:var(--accent);color:var(--accent)}
+.filter-btn.active{background:var(--accent);color:white;border-color:var(--accent)}
+
+.page-container{max-width:1100px;margin:0 auto;padding:3rem 2rem}
+.page-title{font-family:var(--font-head);font-size:32px;margin-bottom:.4rem}
+.page-subtitle{color:var(--text2);font-size:14px;margin-bottom:2rem}
+.cart-layout{display:grid;grid-template-columns:1fr 340px;gap:2rem}
+.cart-items{display:flex;flex-direction:column;gap:.75rem}
+.cart-item{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.25rem;display:flex;align-items:center;gap:1rem}
+.cart-item-img{width:70px;height:70px;border-radius:10px;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:32px;flex-shrink:0}
+.cart-item-info{flex:1}
+.cart-item-info h4{font-size:15px;font-weight:600;margin-bottom:2px}
+.cart-item-info p{font-size:12px;color:var(--text2)}
+.qty-ctrl{display:flex;align-items:center;gap:8px;margin-top:.5rem}
+.qty-btn{width:28px;height:28px;border:1px solid var(--border);border-radius:6px;background:none;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;color:var(--text);transition:all .2s}
+.qty-btn:hover{border-color:var(--accent);color:var(--accent)}
+.qty-num{font-size:15px;font-weight:600;min-width:24px;text-align:center}
+.cart-item-price{text-align:right}
+.remove-btn{background:none;border:none;color:var(--text2);cursor:pointer;font-size:18px;padding:4px;border-radius:6px;transition:color .2s;display:block;margin-top:4px}
+.remove-btn:hover{color:var(--danger)}
+.cart-summary{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.5rem;height:fit-content;position:sticky;top:80px}
+.cart-summary h3{font-size:18px;font-weight:700;margin-bottom:1.25rem;font-family:var(--font-head)}
+.summary-row{display:flex;justify-content:space-between;font-size:14px;margin-bottom:.75rem;color:var(--text2)}
+.summary-row.total{color:var(--text);font-weight:700;font-size:16px;border-top:1px solid var(--border);padding-top:.75rem;margin-top:.75rem}
+.checkout-btn{width:100%;background:var(--accent);color:white;border:none;border-radius:10px;padding:14px;font-size:15px;font-weight:600;cursor:pointer;font-family:var(--font-body);margin-top:1rem;transition:all .2s}
+.checkout-btn:hover{background:#a86b1a}
+.empty-cart{text-align:center;padding:4rem 2rem;color:var(--text2)}
+.empty-cart .emoji{font-size:64px;margin-bottom:1rem}
+
+.auth-wrap{min-height:calc(100vh - 64px);display:flex;align-items:center;justify-content:center;padding:2rem;background:var(--bg)}
+.auth-card{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:2.5rem;width:100%;max-width:420px}
+.form-group{margin-bottom:1.25rem}
+.form-group label{display:block;font-size:13px;font-weight:500;margin-bottom:6px;color:var(--text)}
+.form-group input,.form-group select{width:100%;border:1px solid var(--border);border-radius:10px;padding:11px 14px;font-size:14px;font-family:var(--font-body);outline:none;transition:border .2s;color:var(--text);background:var(--bg)}
+.form-group input:focus,.form-group select:focus{border-color:var(--accent)}
+
+.checkout-layout{display:grid;grid-template-columns:1fr 340px;gap:2rem}
+.form-section{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:1rem}
+.form-section h3{font-size:16px;font-weight:700;margin-bottom:1.25rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.radio-opts{display:flex;flex-direction:column;gap:.75rem}
+.radio-opt{display:flex;align-items:center;gap:.75rem;border:1.5px solid var(--border);border-radius:10px;padding:.875rem 1rem;cursor:pointer;transition:all .2s}
+.radio-opt:hover{border-color:var(--accent)}
+.radio-opt.selected{border-color:var(--accent);background:var(--accent-light)}
+.radio-opt input{accent-color:var(--accent)}
+.radio-opt-info h4{font-size:14px;font-weight:600}
+.radio-opt-info p{font-size:12px;color:var(--text2)}
+.place-order-btn{width:100%;background:var(--accent);color:white;border:none;border-radius:10px;padding:14px;font-size:15px;font-weight:600;cursor:pointer;font-family:var(--font-body);margin-top:1rem;transition:all .2s}
+.place-order-btn:hover{background:#a86b1a}
+
+.success-wrap{text-align:center;padding:5rem 2rem;max-width:500px;margin:0 auto}
+.success-icon{font-size:72px;margin-bottom:1.5rem}
+.success-wrap h2{font-family:var(--font-head);font-size:32px;margin-bottom:.75rem;color:var(--accent)}
+.success-wrap p{color:var(--text2);font-size:15px;margin-bottom:2rem;line-height:1.6}
+.order-number{background:var(--accent-light);border:1px solid var(--accent2);border-radius:10px;padding:.875rem 1.25rem;font-size:14px;font-weight:600;color:var(--accent);margin-bottom:2rem}
+
+.toast{position:fixed;bottom:2rem;right:2rem;background:var(--text);color:white;border-radius:12px;padding:14px 20px;font-size:14px;font-weight:500;z-index:9999;transform:translateY(20px);opacity:0;transition:all .3s;pointer-events:none;font-family:var(--font-body)}
+.toast.show{transform:translateY(0);opacity:1}
+
+.promo-bar{background:var(--accent);color:white;text-align:center;padding:10px;font-size:13px;font-weight:500;letter-spacing:.5px}
+.user-greeting{font-size:13px;color:var(--text2);font-weight:500}
+.logout-btn{background:none;border:none;color:var(--accent);cursor:pointer;font-size:13px;font-family:var(--font-body);font-weight:500;margin-left:.5rem}
+
+.stock-indicator{margin-top:.4rem;font-size:11px;font-weight:600;display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:5px}
+.stock-ok{background:#ECFDF5;color:#065F46}
+.stock-low{background:#FFFBEB;color:#92400E}
+.stock-empty{background:#FEF2F2;color:#991B1B}
+
+.about-hero{background:linear-gradient(135deg,#5C3D11 0%,#8B5E1A 45%,#C17F24 100%);color:white;padding:4rem 2rem;text-align:center}
+.about-hero h1{font-family:var(--font-head);font-size:42px;margin-bottom:.75rem}
+.about-hero p{font-size:16px;opacity:.85;max-width:600px;margin:0 auto;line-height:1.6}
+.about-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;margin-top:2rem}
+.about-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:2rem}
+.about-card h3{font-family:var(--font-head);font-size:22px;margin-bottom:.75rem;color:var(--accent)}
+.about-card p{font-size:14px;color:var(--text2);line-height:1.7}
+.about-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin:2.5rem 0}
+.about-stat{text-align:center;background:var(--accent-light);border-radius:14px;padding:1.5rem}
+.about-stat h3{font-family:var(--font-head);font-size:30px;color:var(--accent)}
+.about-stat p{font-size:13px;color:var(--text2);margin-top:4px}
+.about-values{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:1rem}
+.value-card{text-align:center;padding:1.5rem;border:1px solid var(--border);border-radius:14px}
+.value-card .icon{font-size:36px;margin-bottom:.75rem}
+.value-card h4{font-size:15px;font-weight:600;margin-bottom:.4rem}
+.value-card p{font-size:12px;color:var(--text2);line-height:1.5}
+
+.detail-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9998;align-items:center;justify-content:center;backdrop-filter:blur(4px);padding:1rem}
+.detail-overlay.open{display:flex}
+.detail-box{background:white;border-radius:20px;width:100%;max-width:680px;max-height:90vh;overflow-y:auto;box-shadow:0 24px 64px rgba(0,0,0,.25);animation:modalIn .25s ease;position:relative}
+@keyframes modalIn{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+.detail-close{position:absolute;top:14px;right:18px;background:rgba(255,255,255,.9);border:none;width:32px;height:32px;border-radius:50%;font-size:20px;cursor:pointer;color:var(--text2);z-index:10;display:flex;align-items:center;justify-content:center}
+.detail-img{height:260px;display:flex;align-items:center;justify-content:center;font-size:100px;position:relative;border-radius:20px 20px 0 0;overflow:hidden}
+.detail-body{padding:2rem}
+.detail-cat{display:inline-block;background:var(--accent-light);color:var(--accent);font-size:11px;font-weight:600;padding:4px 12px;border-radius:100px;text-transform:uppercase;letter-spacing:1px;margin-bottom:.75rem}
+.detail-title{font-family:var(--font-head);font-size:26px;margin-bottom:.5rem}
+.detail-desc{font-size:14px;color:var(--text2);line-height:1.7;margin-bottom:1.25rem}
+.detail-meta{display:flex;gap:1.5rem;margin-bottom:1.25rem;flex-wrap:wrap}
+.detail-meta-item{font-size:13px;color:var(--text2)}
+.detail-meta-item b{color:var(--text);font-weight:600}
+.detail-footer{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border);padding-top:1.25rem;flex-wrap:wrap;gap:1rem}
+.detail-price-wrap .price{font-size:26px}
+.detail-add-btn{background:var(--accent);color:white;border:none;border-radius:10px;padding:12px 28px;font-size:14px;font-weight:600;cursor:pointer;font-family:var(--font-body);transition:all .2s}
+.detail-add-btn:hover{background:#a86b1a}
+.detail-add-btn:disabled{background:#D1D5DB;cursor:not-allowed;color:#6B7280}
+.product-img.clickable{cursor:pointer}
+
+/* ===== RESPONSIVE MOBILE ===== */
+@media (max-width: 768px) {
+  /* Promo bar */
+  .promo-bar{font-size:11px;padding:8px 1rem}
+
+  /* Navbar */
+  nav{padding:0 1rem}
+  .nav-links{display:none}
+  .nav-inner{height:56px}
+  .nav-logo h1{font-size:17px}
+  .nav-logo span{display:none}
+  .nav-cart{padding:7px 12px;font-size:12px}
+  .user-greeting{display:none}
+
+  /* Hamburger menu */
+  .hamburger{display:flex !important}
+  .mobile-nav{display:block !important}
+
+  /* Hero */
+  .hero{padding:2.5rem 1.25rem}
+  .hero h1{font-size:28px;letter-spacing:-.5px}
+  .hero p{font-size:14px}
+  .hero-cta{flex-direction:column;align-items:center}
+  .hero-cta .btn-primary,.hero-cta .btn-outline{width:100%;max-width:300px}
+  .hero-stats{gap:1.5rem;flex-wrap:wrap;margin-top:2.5rem;padding-top:2rem}
+  .hero-stat h3{font-size:22px}
+  .hero::after,.hero::before{font-size:100px;opacity:.05}
+
+  /* Sections */
+  .section{padding:2.5rem 1rem}
+  .section-head h2{font-size:22px}
+
+  /* Categories: 2 kolom */
+  .categories{grid-template-columns:repeat(2,1fr);gap:.75rem}
+  .cat-icon{font-size:28px}
+
+  /* Products: 1 kolom */
+  .products-grid{grid-template-columns:1fr}
+  .product-img{height:180px}
+
+  /* Cart layout: stack */
+  .cart-layout{grid-template-columns:1fr}
+  .cart-summary{position:static;margin-top:1rem}
+  .page-container{padding:1.5rem 1rem}
+  .page-title{font-size:24px}
+
+  /* Checkout: stack */
+  .checkout-layout{grid-template-columns:1fr}
+  .cart-summary.checkout-sticky{position:static}
+  .form-row{grid-template-columns:1fr}
+
+  /* Detail modal */
+  .detail-layout{flex-direction:column;gap:1.25rem}
+  .detail-img{width:100%;height:220px}
+  .modal-content{padding:1.25rem}
+
+  /* Filter bar wrap */
+  .filter-bar{gap:.4rem}
+  .filter-btn{padding:6px 12px;font-size:12px}
+
+  /* Toast */
+  .toast{bottom:1rem;right:1rem;left:1rem;right:1rem;font-size:13px}
+}
+
+@media (min-width:769px) and (max-width:1024px) {
+  .products-grid{grid-template-columns:repeat(2,1fr)}
+  .categories{grid-template-columns:repeat(2,1fr)}
+  .cart-layout{grid-template-columns:1fr 300px}
+  .checkout-layout{grid-template-columns:1fr 300px}
+}
+
+/* Hamburger & mobile nav */
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all .2s}
+.mobile-nav{display:none;position:fixed;inset:0;top:56px;background:var(--white);z-index:999;padding:1.5rem;border-top:1px solid var(--border)}
+.mobile-nav.open{display:block;animation:slideDown .2s ease}
+@keyframes slideDown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+.mobile-nav ul{list-style:none}
+.mobile-nav ul li{border-bottom:1px solid var(--border)}
+.mobile-nav ul li a{display:block;padding:1rem 0;font-size:15px;font-weight:500;color:var(--text);cursor:pointer;text-decoration:none}
+.mobile-nav ul li a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+
+<div class="promo-bar">🎁 Gratis ongkir pembelian min. Rp200.000 · Tepung segar langsung dari penggilingan</div>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo" onclick="showPage('home')">
+      <h1>Bramas Jaya</h1>
+      <span>Toko Tepung Serba Guna</span>
+    </div>
+    <ul class="nav-links">
+      <li><a onclick="showPage('home')" class="active" id="nav-home">Beranda</a></li>
+      <li><a onclick="showPage('products')" id="nav-products">Produk</a></li>
+      <li><a onclick="showPage('about')" id="nav-about">Tentang Kami</a></li>
+      {% if user.is_authenticated %}
+      <li><a href="/profil/">Profil Saya</a></li>
+      {% endif %}
+    </ul>
+    <div class="nav-actions">
+      <div id="nav-auth-area">
+        {% if user.is_authenticated %}
+        <span class="user-greeting">Hai, {{ user.username }}</span>
+        <a href="/logout/" class="logout-btn">Keluar</a>
+        {% else %}
+        <button class="nav-user" onclick="openLoginModal()">Masuk</button>
+        {% endif %}
+      </div>
+      <button class="nav-cart" onclick="showPage('cart')">
+        🛒 Keranjang <span class="cart-badge" id="cart-count">0</span>
+      </button>
+      <button class="hamburger" id="hamburger-btn" onclick="toggleMobileNav()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobile-nav">
+  <ul>
+    <li><a onclick="showPage('home');closeMobileNav()">🏠 Beranda</a></li>
+    <li><a onclick="showPage('products');closeMobileNav()">🌾 Produk</a></li>
+    <li><a onclick="showPage('about');closeMobileNav()">ℹ️ Tentang Kami</a></li>
+    {% if user.is_authenticated %}
+    <li><a href="/profil/">👤 Profil Saya</a></li>
+    <li><a href="/cek-poin/">⭐ Poin Saya</a></li>
+    <li><a href="/logout/">🚪 Keluar</a></li>
+    {% else %}
+    <li><a onclick="openLoginModal();closeMobileNav()">🔐 Masuk / Daftar</a></li>
+    {% endif %}
+  </ul>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- HOME -->
+<div class="page active" id="page-home">
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">✦ Tepung Pilihan Terbaik</div>
+      <h1>Semua Jenis Tepung Ada di Sini</h1>
+      <p>Dari tepung terigu, beras, tapioka, hingga tepung spesial — kami menyediakan tepung berkualitas tinggi untuk kebutuhan memasak dan usaha Anda.</p>
+      <div class="hero-cta">
+        <button class="btn-primary" onclick="showPage('products')">Belanja Sekarang</button>
+        <button class="btn-outline" onclick="filterAndGo('Grosir')">Harga Grosir</button>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><h3>4+</h3><p>Jenis Tepung</p></div>
+        <div class="hero-stat"><h3>10rb+</h3><p>Pelanggan Aktif</p></div>
+        <div class="hero-stat"><h3>{{ rata_toko }}★</h3><p>Rating Toko ({{ total_ulasan }} ulasan)</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <h2>Kategori Tepung</h2>
+      <a onclick="showPage('products')">Lihat Semua →</a>
+    </div>
+    <div class="categories">
+      <div class="cat-card" onclick="filterAndGo('Tepung Terigu')">
+        <div class="cat-icon">🌾</div>
+        <h3>Tepung Terigu</h3>
+        <p>Protein rendah, sedang, tinggi</p>
+      </div>
+      <div class="cat-card" onclick="filterAndGo('Tepung Beras')">
+        <div class="cat-icon">🍚</div>
+        <h3>Tepung Beras</h3>
+        <p>Putih, ketan & merah</p>
+      </div>
+      <div class="cat-card" onclick="filterAndGo('Tepung Tapioka')">
+        <div class="cat-icon">🥔</div>
+        <h3>Tepung Tapioka</h3>
+        <p>Kanji & aci berkualitas</p>
+      </div>
+      <div class="cat-card" onclick="filterAndGo('Tepung Spesial')">
+        <div class="cat-icon">✨</div>
+        <h3>Tepung Spesial</h3>
+        <p>Maizena, sagu, mocaf & lainnya</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" style="padding-top:0">
+    <div class="section-head">
+      <h2>Produk Unggulan</h2>
+      <a onclick="showPage('products')">Semua Produk →</a>
+    </div>
+    <div class="products-grid" id="featured-products"></div>
+  </div>
+
+  <div style="background:var(--bg2);padding:3rem 2rem;margin-top:1rem">
+    <div style="max-width:1200px;margin:0 auto">
+      <div style="text-align:center;margin-bottom:2rem">
+        <h2 style="font-family:var(--font-head);font-size:26px">Mengapa Pilih Bramas Jaya?</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem">
+        <div style="text-align:center">
+          <div style="font-size:32px;margin-bottom:.75rem">🏭</div>
+          <h4 style="font-size:14px;font-weight:600;margin-bottom:4px">Langsung dari Penggilingan</h4>
+          <p style="font-size:12px;color:var(--text2)">Tepung segar tanpa perantara, harga lebih hemat</p>
+        </div>
+        <div style="text-align:center">
+          <div style="font-size:32px;margin-bottom:.75rem">📦</div>
+          <h4 style="font-size:14px;font-weight:600;margin-bottom:4px">Kemasan Rapat & Higienis</h4>
+          <p style="font-size:12px;color:var(--text2)">Tersegel vakum, menjaga kualitas tepung lebih lama</p>
+        </div>
+        <div style="text-align:center">
+          <div style="font-size:32px;margin-bottom:.75rem">🚚</div>
+          <h4 style="font-size:14px;font-weight:600;margin-bottom:4px">Pengiriman Cepat</h4>
+          <p style="font-size:12px;color:var(--text2)">Kirim ke seluruh Indonesia, aman sampai tujuan</p>
+        </div>
+        <div style="text-align:center">
+          <div style="font-size:32px;margin-bottom:.75rem">💰</div>
+          <h4 style="font-size:14px;font-weight:600;margin-bottom:4px">Harga Grosir Tersedia</h4>
+          <p style="font-size:12px;color:var(--text2)">Cocok untuk usaha bakeri, katering & restoran</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTS PAGE -->
+<div class="page" id="page-products">
+  <div class="section">
+    <div class="page-title">Semua Produk</div>
+    <div class="page-subtitle">Tepung berkualitas untuk semua kebutuhan memasak & usaha Anda</div>
+    <div class="filter-bar" id="filter-bar"></div>
+    <div class="products-grid" id="all-products"></div>
+  </div>
+</div>
+
+<!-- ABOUT PAGE -->
+<div class="page" id="page-about">
+  <div class="about-hero">
+    <h1>Tentang Bramas Jaya</h1>
+    <p>Sejak 2015, kami berkomitmen menghadirkan tepung berkualitas tinggi langsung dari penggilingan terbaik untuk dapur dan usaha Anda di seluruh Indonesia.</p>
+  </div>
+  <div class="section">
+    <div class="about-stats">
+      <div class="about-stat"><h3>12+</h3><p>Tahun Pengalaman</p></div>
+      <div class="about-stat"><h3>4+</h3><p>Jenis Tepung</p></div>
+      <div class="about-stat"><h3>10rb+</h3><p>Pelanggan Aktif</p></div>
+      <div class="about-stat"><h3>4.9★</h3><p>Rating Toko</p></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-card">
+        <h3>🌾 Cerita Kami</h3>
+        <p>Bramas Jaya didirikan oleh Bapak Heri Purwanto pada tahun 2015 di Desa Bojongsari. Usaha ini memelopori produksi tepung mendoan instan yang sangat praktis dan khas Purwokerto. Berkat permintaan pasar yang masif, mereka berekspansi dengan membuka pabrik kedua di Jl. Tri Murti No. 10, Sokanegara, Purwokerto Timur, pada tahun 2016.</p>
+      </div>
+      <div class="about-card">
+        <h3>🎯 Visi & Misi</h3>
+        <div style="margin-bottom:1.25rem">
+          <div style="font-size:12px;font-weight:700;color:var(--accent);letter-spacing:1px;text-transform:uppercase;margin-bottom:.5rem">Visi</div>
+          <p style="font-size:14px;color:var(--text2);line-height:1.7">Menjadi produsen tepung bumbu dan tepung mendoan instan terkemuka yang mampu memperluas wilayah pemasaran hingga ke seluruh Indonesia, sekaligus melestarikan cita rasa kuliner khas Banyumas secara praktis.</p>
+        </div>
+        <div>
+          <div style="font-size:12px;font-weight:700;color:var(--accent);letter-spacing:1px;text-transform:uppercase;margin-bottom:.75rem">Misi</div>
+          <div style="display:flex;flex-direction:column;gap:.6rem">
+            <div style="display:flex;gap:.75rem;align-items:flex-start">
+              <span style="background:var(--accent-light);color:var(--accent);border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:1px">1</span>
+              <div><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px">Peningkatan Kapasitas</div><div style="font-size:13px;color:var(--text2);line-height:1.6">Terus menambah dan memperbarui alat produksi guna memenuhi permintaan pasar yang terus melonjak.</div></div>
+            </div>
+            <div style="display:flex;gap:.75rem;align-items:flex-start">
+              <span style="background:var(--accent-light);color:var(--accent);border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:1px">2</span>
+              <div><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px">Menjaga Kualitas</div><div style="font-size:13px;color:var(--text2);line-height:1.6">Mempertahankan keaslian rasa gurih otentik mendoan Purwokerto pada setiap produk.</div></div>
+            </div>
+            <div style="display:flex;gap:.75rem;align-items:flex-start">
+              <span style="background:var(--accent-light);color:var(--accent);border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:1px">3</span>
+              <div><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px">Soliditas Tim</div><div style="font-size:13px;color:var(--text2);line-height:1.6">Membangun kerja sama tim yang solid untuk menjaga kesinambungan dan kualitas bisnis.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:2.5rem">
+      <div class="section-head" style="margin-bottom:1.5rem"><h2>Nilai-Nilai Kami</h2></div>
+      <div class="about-values">
+        <div class="value-card"><div class="icon">✨</div><h4>Kualitas Terjamin</h4><p>Setiap produk melalui proses seleksi dan pengemasan yang higienis</p></div>
+        <div class="value-card"><div class="icon">🤝</div><h4>Terpercaya</h4><p>Ribuan pelanggan setia memilih kami untuk kebutuhan tepung mereka</p></div>
+        <div class="value-card"><div class="icon">🚀</div><h4>Pelayanan Cepat</h4><p>Pengiriman cepat ke seluruh Indonesia dengan kemasan aman</p></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:3rem">
+      <button class="btn-primary" style="background:var(--accent);color:white;padding:14px 32px;font-size:15px;border:none;border-radius:10px;cursor:pointer;font-family:var(--font-body)" onclick="showPage('products')">Mulai Belanja →</button>
+    </div>
+  </div>
+</div>
+
+<!-- CART PAGE -->
+<div class="page" id="page-cart">
+  <div class="page-container">
+    <div class="page-title">Keranjang Belanja</div>
+    <div class="page-subtitle" id="cart-subtitle"></div>
+    <div id="cart-content"></div>
+  </div>
+</div>
+
+<!-- CHECKOUT -->
+<div class="page" id="page-checkout">
+  <div class="page-container">
+    <div class="page-title">Checkout</div>
+    <div class="page-subtitle">Lengkapi data pengiriman Anda</div>
+    <div class="checkout-layout">
+      <div>
+        <div class="form-section">
+          <h3>📦 Informasi Pengiriman</h3>
+          <div class="form-group"><label>Nama Penerima</label><input type="text" id="co-name" placeholder="Nama lengkap"></div>
+          <div class="form-group"><label>No. Telepon</label><input type="tel" id="co-phone" placeholder="08xxxxxxxxxx"></div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Provinsi</label>
+              <select id="co-prov" onchange="onProvChange(this.value)" style="width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:10px;font-size:14px;font-family:var(--font-body);color:var(--text);background:white;cursor:pointer;appearance:auto">
+                <option value="">-- Pilih Provinsi --</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Kota / Kabupaten</label>
+              <select id="co-city" onchange="onKotaChange(this.value, this.options[this.selectedIndex])" style="width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:10px;font-size:14px;font-family:var(--font-body);color:var(--text);background:white;cursor:pointer;appearance:auto" disabled>
+                <option value="">-- Pilih Kota --</option>
+              </select>
+            </div>
+          </div>
+          <!-- Input manual jika kota tidak ada di daftar -->
+          <div id="manual-loc-wrap" style="display:none;margin-top:-.5rem;margin-bottom:.75rem">
+            <div class="form-row">
+              <div class="form-group">
+                <label style="font-size:12px;color:var(--text2)">Provinsi (manual)</label>
+                <input type="text" id="co-prov-manual" placeholder="Ketik nama provinsi..." style="width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:10px;font-size:14px;font-family:var(--font-body)" oninput="onProvManual(this.value)">
+              </div>
+              <div class="form-group">
+                <label style="font-size:12px;color:var(--text2)">Kota (manual)</label>
+                <input type="text" id="co-city-manual" placeholder="Ketik nama kota..." style="width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:10px;font-size:14px;font-family:var(--font-body)" oninput="onKotaManual(this.value)">
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:-.5rem;margin-bottom:.75rem">
+            <label style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text2);cursor:pointer;user-select:none">
+              <input type="checkbox" id="chk-manual-loc" onchange="toggleManualLoc(this.checked)" style="cursor:pointer">
+              Kota saya tidak ada di daftar (isi manual)
+            </label>
+          </div>
+          <div class="form-group"><label>Alamat Lengkap</label><input type="text" id="co-addr" placeholder="Jalan, nomor, RT/RW, kelurahan"></div>
+          <div class="form-group"><label>Kode Pos</label><input type="text" id="co-zip" placeholder="12345"></div>
+        </div>
+        <div class="form-section">
+          <h3>🚚 Metode Pengiriman</h3>
+          <div id="shipping-options-wrap">
+            <div style="text-align:center;padding:1.5rem;color:#7A7060;font-size:13px">
+              <span id="shipping-placeholder">📍 Pilih kota tujuan dulu untuk melihat ongkir</span>
+            </div>
+          </div>
+
+          <!-- Ambil di toko selalu tersedia -->
+          <div class="radio-opts" style="margin-top:.75rem" id="pickup-option">
+            <label class="radio-opt" onclick="selectShipping(this,0,'Ambil di Toko')">
+              <input type="radio" name="ship">
+              <div class="radio-opt-info"><h4>🏪 Ambil di Toko</h4><p>Gratis ongkir</p></div>
+              <span style="margin-left:auto;font-weight:700;color:var(--accent)">Gratis</span>
+            </label>
+          </div>
+        </div>
+        <div class="form-section">
+          <h3>💳 Metode Pembayaran</h3>
+          <div class="radio-opts">
+            <label class="radio-opt selected" onclick="selectPayment(this,'Transfer Bank')">
+              <input type="radio" name="pay" checked>
+              <div class="radio-opt-info"><h4>Transfer Bank</h4><p>BCA, BNI, BRI, Mandiri</p></div>
+            </label>
+            <label class="radio-opt" onclick="selectPayment(this,'QRIS')">
+              <input type="radio" name="pay">
+              <div class="radio-opt-info"><h4>QRIS</h4><p>Bayar via QR Code</p></div>
+            </label>
+
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="cart-summary">
+          <h3>Ringkasan Pesanan</h3>
+          <div id="checkout-items"></div>
+          <div class="summary-row"><span>Subtotal</span><span id="co-subtotal"></span></div>
+          <div class="summary-row"><span>Ongkos Kirim</span><span id="co-ship-cost">Rp20.000</span></div>
+          <div class="summary-row total"><span>Total</span><span id="co-total"></span></div>
+          <button class="place-order-btn" onclick="placeOrder()">Pesan Sekarang ✓</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SUCCESS -->
+<div class="page" id="page-success">
+  <div class="page-container">
+    <div class="success-wrap">
+      <div class="success-icon">🎉</div>
+      <h2>Pesanan Berhasil!</h2>
+      <p>Terima kasih telah berbelanja di Bramas Jaya. Pesanan tepung Anda sedang diproses dan akan segera dikirimkan.</p>
+      <div class="order-number" id="order-num">No. Pesanan: #BJ-000000</div>
+      <button class="btn-primary" style="background:var(--accent);color:white;padding:14px 32px;font-size:15px;border:none;border-radius:10px;cursor:pointer;font-family:var(--font-body)" onclick="showPage('home')">Lanjut Belanja</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const products=[
+  {id:1,name:'Tepung Terigu Protein Tinggi',desc:'Cocok untuk roti, mie, & pizza. Kadar protein 12-13%',price:14000,weight:'1 kg',cat:'Tepung Terigu',emoji:'🌾',badge:'Terlaris'},
+  {id:2,name:'Tepung Terigu Protein Sedang',desc:'Serbaguna untuk kue, gorengan & masakan sehari-hari',price:12000,weight:'1 kg',cat:'Tepung Terigu',emoji:'🌾',badge:null},
+  {id:3,name:'Tepung Terigu Protein Rendah',desc:'Ideal untuk kue kering, biskuit & pastry lembut',price:11500,weight:'1 kg',cat:'Tepung Terigu',emoji:'🌾',badge:null},
+  {id:4,name:'Tepung Beras Putih',desc:'Tepung beras halus untuk jajanan pasar & kue tradisional',price:13000,weight:'500 g',cat:'Tepung Beras',emoji:'🍚',badge:'Unggulan'},
+  {id:5,name:'Tepung Ketan Putih',desc:'Untuk klepon, mochi, & kue ketan. Tekstur kenyal sempurna',price:15000,weight:'500 g',cat:'Tepung Beras',emoji:'🍚',badge:null},
+  {id:6,name:'Tepung Beras Merah',desc:'Kaya serat & antioksidan, pilihan sehat untuk tepung beras',price:18000,weight:'500 g',cat:'Tepung Beras',emoji:'🍚',badge:'New'},
+  {id:7,name:'Tepung Tapioka Rose Brand',desc:'Kanji berkualitas untuk bakso, siomay & pengental masakan',price:10000,weight:'500 g',cat:'Tepung Tapioka',emoji:'🥔',badge:'Terlaris'},
+  {id:8,name:'Tepung Aci / Kanji Curah',desc:'Tepung singkong pilihan, elastis untuk aneka olahan',price:9000,weight:'500 g',cat:'Tepung Tapioka',emoji:'🥔',badge:null},
+  {id:9,name:'Tepung Maizena',desc:'Pati jagung untuk pengental saus, sup & kue chiffon',price:16000,weight:'250 g',cat:'Tepung Spesial',emoji:'🌽',badge:null},
+  {id:10,name:'Tepung Sagu Tani',desc:'Tepung sagu asli Papua untuk papeda & kue sagu',price:13500,weight:'500 g',cat:'Tepung Spesial',emoji:'🌴',badge:null},
+  {id:11,name:'Tepung Mocaf',desc:'Modified Cassava Flour, bebas gluten cocok untuk diet sehat',price:22000,weight:'500 g',cat:'Tepung Spesial',emoji:'✨',badge:'New'},
+  {id:12,name:'Tepung Bumbu Serbaguna',desc:'Tepung bumbu siap pakai untuk gorengan, ayam & ikan',price:12500,weight:'500 g',cat:'Tepung Spesial',emoji:'🧡',badge:'Sale',oldPrice:15000},
+];
+
+let cart=[], loggedIn=false, userName='', shippingCost=20000, activeFilter='Semua', searchQuery='';
+
+function fmt(n){ return 'Rp'+n.toLocaleString('id-ID'); }
+function showToast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2500); }
+
+function toggleMobileNav(){
+  const nav=document.getElementById('mobile-nav');
+  nav.classList.toggle('open');
+}
+function closeMobileNav(){
+  document.getElementById('mobile-nav').classList.remove('open');
+}
+// Close mobile nav on outside click
+document.addEventListener('click', function(e){
+  const nav=document.getElementById('mobile-nav');
+  const btn=document.getElementById('hamburger-btn');
+  if(nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)){
+    nav.classList.remove('open');
+  }
+});
+function updateCartCount(){ document.getElementById('cart-count').textContent=cart.reduce((a,i)=>a+i.qty,0); }
+function getCookie(name){ let v=null; document.cookie.split(';').forEach(c=>{ c=c.trim(); if(c.startsWith(name+'=')) v=decodeURIComponent(c.slice(name.length+1)); }); return v; }
+
+function showPage(p){
+  const current=document.querySelector('.page.active');
+  const target=document.getElementById('page-'+p);
+  if(!target) return;
+  function tampil(){
+    document.querySelectorAll('.page').forEach(x=>{ x.classList.remove('active'); x.style.animation=''; });
+    document.querySelectorAll('.nav-links a').forEach(x=>x.classList.remove('active'));
+    target.style.animation='bjPageIn .4s cubic-bezier(.16,1,.3,1) forwards';
+    target.classList.add('active');
+    const navEl=document.getElementById('nav-'+p);
+    if(navEl) navEl.classList.add('active');
+    if(p==='cart') renderCart();
+    if(p==='checkout'){ renderCheckout(); initCheckout(); }
+    if(p==='products') renderAllProducts();
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  if(current && current!==target){ current.style.animation='bjFadeOut .18s ease forwards'; setTimeout(tampil,150); }
+  else tampil();
+}
+
+function filterAndGo(cat){ activeFilter=cat; showPage('products'); }
+
+function addToCart(id){
+  const prod=products.find(p=>p.id===id);
+  if(!prod) return;
+  const ex=cart.find(i=>i.id===id);
+  const cartQty=ex?ex.qty:0;
+  const stokTersisa=(prod.stock!==undefined)?prod.stock:999;
+  if(cartQty>=stokTersisa){ showToast('⚠️ Stok '+prod.name+' tidak mencukupi'); return; }
+  if(ex){ ex.qty++; } else { cart.push({...prod,qty:1}); }
+  updateCartCount();
+  showToast('✓ '+prod.name+' ('+prod.weight+') ditambahkan');
+}
+
+function changeQty(id,delta){
+  const item=cart.find(i=>i.id===id);
+  if(!item) return;
+  item.qty+=delta;
+  if(item.qty<=0) cart=cart.filter(i=>i.id!==id);
+  updateCartCount(); renderCart();
+}
+
+function removeItem(id){ cart=cart.filter(i=>i.id!==id); updateCartCount(); renderCart(); showToast('Produk dihapus dari keranjang'); }
+function requireLogin(){ openLoginModal(); }
+
+function getBg(cat){
+  const m={'Tepung Terigu':'#FDF6E3','Tepung Beras':'#F0F7F0','Tepung Tapioka':'#FFF0E0','Tepung Spesial':'#F5F0FA'};
+  return m[cat]||'#F5F5F5';
+}
+
+function renderProductCard(p){
+  const stok=(p.stock!==undefined)?p.stock:999;
+  let stockHtml='', btnDisabled='';
+  if(stok<=0){ stockHtml=`<div class="stock-indicator stock-empty">⛔ Stok habis</div>`; btnDisabled='disabled'; }
+  else if(stok<=5){ stockHtml=`<div class="stock-indicator stock-low">⚠️ Sisa ${stok}</div>`; }
+  else { stockHtml=`<div class="stock-indicator stock-ok">✓ Stok: ${stok}</div>`; }
+  const imgContent=p.gambar?`<img src="${p.gambar}" alt="${p.name}">`:`<span style="font-size:68px">${p.emoji}</span>`;
+  return `<div class="product-card">
+    <div class="product-img clickable" style="background:${getBg(p.cat)}" onclick="openDetailModal(${p.id})">
+      ${p.badge?`<div class="product-badge ${p.badge==='Sale'?'sale':p.badge==='New'?'new':''}">${p.badge}</div>`:''}
+      ${imgContent}
+    </div>
+    <div class="product-info">
+      <h3>${p.name}</h3>
+      <span class="product-weight">📦 ${p.weight}</span>
+      <div class="desc">${p.desc}</div>
+      ${stockHtml}
+      <div class="product-footer">
+        <div><span class="price">${fmt(p.price)}</span>${p.oldPrice?`<span class="price-old">${fmt(p.oldPrice)}</span>`:''}</div>
+        <button class="add-btn" onclick="addToCart(${p.id})" ${btnDisabled}>+ Keranjang</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderFeatured(){
+  document.getElementById('featured-products').innerHTML=products.filter(p=>p.badge&&p.badge!=='Sale').slice(0,6).map(renderProductCard).join('');
+}
+
+function setFilter(cat){ activeFilter=cat; renderFilterBtns(); renderProducts(); }
+function setSearch(q){ searchQuery=q; renderProducts(); updateClearBtn(); }
+
+function renderFilterBtns(){
+  const cats=['Semua','Tepung Terigu','Tepung Beras','Tepung Tapioka','Tepung Spesial'];
+  document.getElementById('filter-btns').innerHTML=
+    cats.map(c=>`<button class="filter-btn ${activeFilter===c?'active':''}" onclick="setFilter('${c}')">${c}</button>`).join('');
+}
+
+function updateClearBtn(){
+  const clr=document.getElementById('search-clear');
+  if(clr) clr.style.display=searchQuery?'block':'none';
+}
+
+function renderFilterBar(){
+  document.getElementById('filter-bar').innerHTML=`
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;width:100%;margin-bottom:.5rem">
+      <div id="filter-btns" style="display:flex;gap:.5rem;flex-wrap:wrap"></div>
+      <div style="margin-left:auto;position:relative">
+        <input type="text" id="search-input" placeholder="🔍 Cari produk..."
+          oninput="setSearch(this.value)"
+          style="border:1.5px solid var(--border);border-radius:100px;padding:7px 16px;font-size:13px;font-family:var(--font-body);outline:none;width:220px;transition:border .2s"
+          onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'">
+        <button id="search-clear" onclick="setSearch('');document.getElementById('search-input').value=''" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--text2);font-size:16px;display:none">×</button>
+      </div>
+    </div>`;
+  renderFilterBtns();
+  const inp=document.getElementById('search-input');
+  if(inp && searchQuery){ inp.value=searchQuery; updateClearBtn(); }
+}
+
+function renderProducts(){
+  let filtered=activeFilter==='Semua'?products:products.filter(p=>p.cat===activeFilter);
+  if(searchQuery){ const q=searchQuery.toLowerCase(); filtered=filtered.filter(p=>p.name.toLowerCase().includes(q)||p.desc.toLowerCase().includes(q)||p.cat.toLowerCase().includes(q)); }
+  const grid=document.getElementById('all-products');
+  if(filtered.length===0){
+    grid.innerHTML=`<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--text2)">
+      <div style="font-size:48px;margin-bottom:1rem">🔍</div>
+      <p style="font-size:15px;font-weight:500">Produk "<strong>${searchQuery}</strong>" tidak ditemukan</p>
+      <p style="font-size:13px;margin-top:.5rem">Coba kata kunci lain atau pilih kategori berbeda</p>
+      <button onclick="setSearch('');setFilter('Semua')" style="margin-top:1rem;background:var(--accent);color:white;border:none;border-radius:8px;padding:8px 20px;font-size:13px;font-weight:600;cursor:pointer">Reset Pencarian</button>
+    </div>`;
+  } else { grid.innerHTML=filtered.map(renderProductCard).join(''); }
+}
+
+function renderAllProducts(){ renderFilterBar(); renderProducts(); }
+
+function renderCart(){
+  const sub=document.getElementById('cart-subtitle');
+  const content=document.getElementById('cart-content');
+  if(cart.length===0){
+    sub.textContent='';
+    content.innerHTML=`<div class="empty-cart"><div class="emoji">🌾</div><p>Keranjang Anda masih kosong.<br>Yuk pilih tepung kebutuhan Anda!</p><br><button style="background:var(--accent);color:white;padding:12px 28px;border:none;border-radius:10px;font-size:15px;cursor:pointer;font-family:var(--font-body)" onclick="showPage('products')">Lihat Produk</button></div>`;
+    return;
+  }
+  sub.textContent=cart.reduce((a,i)=>a+i.qty,0)+' produk dalam keranjang';
+  const subtotal=cart.reduce((a,i)=>a+i.price*i.qty,0);
+  const total=subtotal+shippingCost;
+  content.innerHTML=`<div class="cart-layout">
+    <div class="cart-items">${cart.map(item=>`
+      <div class="cart-item">
+        <div class="cart-item-img" style="overflow:hidden;padding:0">${item.gambar
+          ? `<img src="${item.gambar}" alt="${item.name}" style="width:100%;height:100%;object-fit:cover;border-radius:10px">`
+          : `<span style="font-size:32px">${item.emoji}</span>`
+        }</div>
+        <div class="cart-item-info">
+          <h4>${item.name}</h4>
+          <p>${fmt(item.price)} / ${item.weight}</p>
+          <div class="qty-ctrl">
+            <button class="qty-btn" onclick="changeQty(${item.id},-1)">−</button>
+            <span class="qty-num">${item.qty}</span>
+            <button class="qty-btn" onclick="changeQty(${item.id},1)">+</button>
+          </div>
+        </div>
+        <div class="cart-item-price">
+          <div class="price">${fmt(item.price*item.qty)}</div>
+          <button class="remove-btn" onclick="removeItem(${item.id})">✕</button>
+        </div>
+      </div>`).join('')}
+    </div>
+    <div class="cart-summary">
+      <h3>Ringkasan</h3>
+      <div class="summary-row"><span>Subtotal (${cart.reduce((a,i)=>a+i.qty,0)} produk)</span><span>${fmt(subtotal)}</span></div>
+      <div class="summary-row"><span>Ongkos Kirim</span><span>${fmt(shippingCost)}</span></div>
+      <div class="summary-row total"><span>Total</span><span>${fmt(total)}</span></div>
+      <button class="checkout-btn" onclick="${loggedIn?"showPage('checkout')":'requireLogin()'}">Lanjut ke Checkout →</button>
+    </div>
+  </div>`;
+}
+
+function updateAuthUI(){
+  const area=document.getElementById('nav-auth-area');
+  if(loggedIn){ area.innerHTML=`<span class="user-greeting">Hai, ${userName}</span><a href="/profil/" class="logout-btn" style="margin-right:.25rem">Profil</a><a href="/logout/" class="logout-btn">Keluar</a>`; }
+  else { area.innerHTML=`<button class="nav-user" onclick="openLoginModal()">Masuk</button>`; }
+}
+
+
+// ===== PROVINSI & KOTA (Hardcoded, tidak butuh API) =====
+const ORIGIN_CITY_ID = '399';
+let selectedCityId = '';
+let selectedCityName = '';
+let selectedProvName = '';
+
+// Data 38 Provinsi Indonesia
+const DATA_PROVINSI = [
+  {id:'34',nama:'Aceh'},{id:'1',nama:'Bali'},{id:'2',nama:'Bangka Belitung'},
+  {id:'3',nama:'Banten'},{id:'4',nama:'Bengkulu'},{id:'5',nama:'DI Yogyakarta'},
+  {id:'6',nama:'DKI Jakarta'},{id:'7',nama:'Gorontalo'},{id:'8',nama:'Jambi'},
+  {id:'9',nama:'Jawa Barat'},{id:'10',nama:'Jawa Tengah'},{id:'11',nama:'Jawa Timur'},
+  {id:'12',nama:'Kalimantan Barat'},{id:'13',nama:'Kalimantan Selatan'},{id:'14',nama:'Kalimantan Tengah'},
+  {id:'15',nama:'Kalimantan Timur'},{id:'16',nama:'Kalimantan Utara'},{id:'17',nama:'Kepulauan Riau'},
+  {id:'18',nama:'Lampung'},{id:'19',nama:'Maluku'},{id:'20',nama:'Maluku Utara'},
+  {id:'21',nama:'Nusa Tenggara Barat'},{id:'22',nama:'Nusa Tenggara Timur'},
+  {id:'23',nama:'Papua'},{id:'24',nama:'Papua Barat'},{id:'37',nama:'Papua Barat Daya'},
+  {id:'35',nama:'Papua Pegunungan'},{id:'36',nama:'Papua Selatan'},{id:'38',nama:'Papua Tengah'},
+  {id:'25',nama:'Riau'},{id:'26',nama:'Sulawesi Barat'},{id:'27',nama:'Sulawesi Selatan'},
+  {id:'28',nama:'Sulawesi Tengah'},{id:'29',nama:'Sulawesi Tenggara'},{id:'30',nama:'Sulawesi Utara'},
+  {id:'31',nama:'Sumatera Barat'},{id:'32',nama:'Sumatera Selatan'},{id:'33',nama:'Sumatera Utara'},
+];
+
+// Data kota per provinsi (id RajaOngkir)
+const DATA_KOTA = {
+  '34':[ // Aceh
+    {id:'1',nama:'Kab. Aceh Barat'},{id:'2',nama:'Kab. Aceh Barat Daya'},{id:'3',nama:'Kab. Aceh Besar'},
+    {id:'4',nama:'Kab. Aceh Jaya'},{id:'5',nama:'Kab. Aceh Selatan'},{id:'6',nama:'Kab. Aceh Singkil'},
+    {id:'7',nama:'Kab. Aceh Tamiang'},{id:'8',nama:'Kab. Aceh Tengah'},{id:'9',nama:'Kab. Aceh Tenggara'},
+    {id:'10',nama:'Kab. Aceh Timur'},{id:'11',nama:'Kab. Aceh Utara'},{id:'12',nama:'Kota Banda Aceh'},
+    {id:'13',nama:'Kota Langsa'},{id:'14',nama:'Kota Lhokseumawe'},{id:'15',nama:'Kota Sabang'},
+    {id:'16',nama:'Kota Subulussalam'},{id:'17',nama:'Kab. Bener Meriah'},{id:'18',nama:'Kab. Bireuen'},
+    {id:'19',nama:'Kab. Gayo Lues'},{id:'20',nama:'Kab. Nagan Raya'},{id:'21',nama:'Kab. Pidie'},
+    {id:'22',nama:'Kab. Pidie Jaya'},{id:'23',nama:'Kab. Simeulue'},
+  ],
+  '1':[ // Bali
+    {id:'24',nama:'Kab. Badung'},{id:'25',nama:'Kab. Bangli'},{id:'26',nama:'Kab. Buleleng'},
+    {id:'27',nama:'Kota Denpasar'},{id:'28',nama:'Kab. Gianyar'},{id:'29',nama:'Kab. Jembrana'},
+    {id:'30',nama:'Kab. Karangasem'},{id:'31',nama:'Kab. Klungkung'},{id:'32',nama:'Kab. Tabanan'},
+  ],
+  '2':[ // Bangka Belitung
+    {id:'33',nama:'Kab. Bangka'},{id:'34',nama:'Kab. Bangka Barat'},{id:'35',nama:'Kab. Bangka Selatan'},
+    {id:'36',nama:'Kab. Bangka Tengah'},{id:'37',nama:'Kab. Belitung'},{id:'38',nama:'Kab. Belitung Timur'},
+    {id:'39',nama:'Kota Pangkalpinang'},
+  ],
+  '3':[ // Banten
+    {id:'40',nama:'Kota Cilegon'},{id:'41',nama:'Kab. Lebak'},{id:'42',nama:'Kab. Pandeglang'},
+    {id:'43',nama:'Kab. Serang'},{id:'44',nama:'Kota Serang'},{id:'45',nama:'Kab. Tangerang'},
+    {id:'46',nama:'Kota Tangerang'},{id:'47',nama:'Kota Tangerang Selatan'},
+  ],
+  '4':[ // Bengkulu
+    {id:'48',nama:'Kab. Bengkulu Selatan'},{id:'49',nama:'Kab. Bengkulu Tengah'},{id:'50',nama:'Kab. Bengkulu Utara'},
+    {id:'51',nama:'Kota Bengkulu'},{id:'52',nama:'Kab. Kaur'},{id:'53',nama:'Kab. Kepahiang'},
+    {id:'54',nama:'Kab. Lebong'},{id:'55',nama:'Kab. Mukomuko'},{id:'56',nama:'Kab. Rejang Lebong'},
+    {id:'57',nama:'Kab. Seluma'},
+  ],
+  '5':[ // DI Yogyakarta
+    {id:'58',nama:'Kab. Bantul'},{id:'59',nama:'Kab. Gunungkidul'},{id:'60',nama:'Kab. Kulon Progo'},
+    {id:'61',nama:'Kab. Sleman'},{id:'62',nama:'Kota Yogyakarta'},
+  ],
+  '6':[ // DKI Jakarta
+    {id:'63',nama:'Kab. Kepulauan Seribu'},{id:'64',nama:'Kota Jakarta Barat'},{id:'65',nama:'Kota Jakarta Pusat'},
+    {id:'66',nama:'Kota Jakarta Selatan'},{id:'67',nama:'Kota Jakarta Timur'},{id:'68',nama:'Kota Jakarta Utara'},
+  ],
+  '7':[ // Gorontalo
+    {id:'69',nama:'Kab. Boalemo'},{id:'70',nama:'Kab. Bone Bolango'},{id:'71',nama:'Kota Gorontalo'},
+    {id:'72',nama:'Kab. Gorontalo'},{id:'73',nama:'Kab. Gorontalo Utara'},{id:'74',nama:'Kab. Pohuwato'},
+  ],
+  '8':[ // Jambi
+    {id:'75',nama:'Kab. Batanghari'},{id:'76',nama:'Kab. Bungo'},{id:'77',nama:'Kota Jambi'},
+    {id:'78',nama:'Kab. Kerinci'},{id:'79',nama:'Kab. Merangin'},{id:'80',nama:'Kab. Muaro Jambi'},
+    {id:'81',nama:'Kab. Sarolangun'},{id:'82',nama:'Kota Sungai Penuh'},{id:'83',nama:'Kab. Tanjung Jabung Barat'},
+    {id:'84',nama:'Kab. Tanjung Jabung Timur'},{id:'85',nama:'Kab. Tebo'},
+  ],
+  '9':[ // Jawa Barat
+    {id:'86',nama:'Kota Bandung'},{id:'87',nama:'Kab. Bandung'},{id:'88',nama:'Kab. Bandung Barat'},
+    {id:'89',nama:'Kota Banjar'},{id:'90',nama:'Kab. Bekasi'},{id:'91',nama:'Kota Bekasi'},
+    {id:'92',nama:'Kab. Bogor'},{id:'93',nama:'Kota Bogor'},{id:'94',nama:'Kab. Ciamis'},
+    {id:'95',nama:'Kab. Cianjur'},{id:'96',nama:'Kab. Cirebon'},{id:'97',nama:'Kota Cirebon'},
+    {id:'98',nama:'Kota Depok'},{id:'99',nama:'Kab. Garut'},{id:'100',nama:'Kab. Indramayu'},
+    {id:'101',nama:'Kab. Karawang'},{id:'102',nama:'Kab. Kuningan'},{id:'103',nama:'Kab. Majalengka'},
+    {id:'104',nama:'Kab. Pangandaran'},{id:'105',nama:'Kab. Purwakarta'},{id:'106',nama:'Kab. Subang'},
+    {id:'107',nama:'Kab. Sukabumi'},{id:'108',nama:'Kota Sukabumi'},{id:'109',nama:'Kab. Sumedang'},
+    {id:'110',nama:'Kab. Tasikmalaya'},{id:'111',nama:'Kota Tasikmalaya'},
+  ],
+  '10':[ // Jawa Tengah
+    {id:'112',nama:'Kab. Banjarnegara'},{id:'113',nama:'Kab. Banyumas'},{id:'114',nama:'Kab. Batang'},
+    {id:'115',nama:'Kota Blora'},{id:'116',nama:'Kab. Blora'},{id:'117',nama:'Kab. Boyolali'},
+    {id:'118',nama:'Kab. Brebes'},{id:'119',nama:'Kota Magelang'},{id:'120',nama:'Kab. Magelang'},
+    {id:'121',nama:'Kab. Cilacap'},{id:'122',nama:'Kab. Demak'},{id:'123',nama:'Kota Semarang'},
+    {id:'124',nama:'Kab. Semarang'},{id:'125',nama:'Kab. Grobogan'},{id:'126',nama:'Kab. Jepara'},
+    {id:'127',nama:'Kab. Karanganyar'},{id:'128',nama:'Kab. Kebumen'},{id:'129',nama:'Kab. Kendal'},
+    {id:'130',nama:'Kab. Klaten'},{id:'131',nama:'Kab. Kudus'},{id:'132',nama:'Kab. Pati'},
+    {id:'133',nama:'Kab. Pekalongan'},{id:'134',nama:'Kota Pekalongan'},{id:'135',nama:'Kab. Pemalang'},
+    {id:'136',nama:'Kota Purwokerto'},{id:'137',nama:'Kab. Purbalingga'},{id:'138',nama:'Kab. Purworejo'},
+    {id:'139',nama:'Kab. Rembang'},{id:'140',nama:'Kota Salatiga'},{id:'141',nama:'Kab. Sragen'},
+    {id:'142',nama:'Kab. Sukoharjo'},{id:'143',nama:'Kota Surakarta'},{id:'144',nama:'Kab. Tegal'},
+    {id:'145',nama:'Kota Tegal'},{id:'146',nama:'Kab. Temanggung'},{id:'147',nama:'Kab. Wonogiri'},
+    {id:'148',nama:'Kab. Wonosobo'},
+  ],
+  '11':[ // Jawa Timur
+    {id:'149',nama:'Kab. Bangkalan'},{id:'150',nama:'Kab. Banyuwangi'},{id:'151',nama:'Kab. Blitar'},
+    {id:'152',nama:'Kota Blitar'},{id:'153',nama:'Kab. Bojonegoro'},{id:'154',nama:'Kab. Bondowoso'},
+    {id:'155',nama:'Kota Batu'},{id:'156',nama:'Kota Kediri'},{id:'157',nama:'Kab. Gresik'},
+    {id:'158',nama:'Kab. Jember'},{id:'159',nama:'Kab. Jombang'},{id:'160',nama:'Kab. Kediri'},
+    {id:'161',nama:'Kab. Lamongan'},{id:'162',nama:'Kab. Lumajang'},{id:'163',nama:'Kab. Madiun'},
+    {id:'164',nama:'Kota Madiun'},{id:'165',nama:'Kab. Magetan'},{id:'166',nama:'Kota Malang'},
+    {id:'167',nama:'Kab. Malang'},{id:'168',nama:'Kab. Mojokerto'},{id:'169',nama:'Kota Mojokerto'},
+    {id:'170',nama:'Kab. Nganjuk'},{id:'171',nama:'Kab. Ngawi'},{id:'172',nama:'Kab. Pacitan'},
+    {id:'173',nama:'Kab. Pamekasan'},{id:'174',nama:'Kab. Pasuruan'},{id:'175',nama:'Kota Pasuruan'},
+    {id:'176',nama:'Kab. Ponorogo'},{id:'177',nama:'Kab. Probolinggo'},{id:'178',nama:'Kota Probolinggo'},
+    {id:'179',nama:'Kab. Sampang'},{id:'180',nama:'Kab. Sidoarjo'},{id:'181',nama:'Kab. Situbondo'},
+    {id:'182',nama:'Kab. Sumenep'},{id:'183',nama:'Kota Surabaya'},{id:'184',nama:'Kab. Trenggalek'},
+    {id:'185',nama:'Kab. Tuban'},{id:'186',nama:'Kab. Tulungagung'},
+  ],
+  '12':[ // Kalimantan Barat
+    {id:'187',nama:'Kab. Bengkayang'},{id:'188',nama:'Kab. Kapuas Hulu'},{id:'189',nama:'Kab. Kayong Utara'},
+    {id:'190',nama:'Kab. Ketapang'},{id:'191',nama:'Kab. Kubu Raya'},{id:'192',nama:'Kab. Landak'},
+    {id:'193',nama:'Kab. Melawi'},{id:'194',nama:'Kab. Mempawah'},{id:'195',nama:'Kab. Sambas'},
+    {id:'196',nama:'Kab. Sanggau'},{id:'197',nama:'Kab. Sekadau'},{id:'198',nama:'Kab. Sintang'},
+    {id:'199',nama:'Kota Pontianak'},{id:'200',nama:'Kota Singkawang'},
+  ],
+  '13':[ // Kalimantan Selatan
+    {id:'201',nama:'Kab. Balangan'},{id:'202',nama:'Kota Banjarbaru'},{id:'203',nama:'Kota Banjarmasin'},
+    {id:'204',nama:'Kab. Banjar'},{id:'205',nama:'Kab. Barito Kuala'},{id:'206',nama:'Kab. Hulu Sungai Selatan'},
+    {id:'207',nama:'Kab. Hulu Sungai Tengah'},{id:'208',nama:'Kab. Hulu Sungai Utara'},{id:'209',nama:'Kab. Kotabaru'},
+    {id:'210',nama:'Kab. Tabalong'},{id:'211',nama:'Kab. Tanah Bumbu'},{id:'212',nama:'Kab. Tanah Laut'},
+    {id:'213',nama:'Kab. Tapin'},
+  ],
+  '14':[ // Kalimantan Tengah
+    {id:'214',nama:'Kab. Barito Selatan'},{id:'215',nama:'Kab. Barito Timur'},{id:'216',nama:'Kab. Barito Utara'},
+    {id:'217',nama:'Kab. Gunung Mas'},{id:'218',nama:'Kab. Kapuas'},{id:'219',nama:'Kab. Katingan'},
+    {id:'220',nama:'Kab. Kotawaringin Barat'},{id:'221',nama:'Kab. Kotawaringin Timur'},{id:'222',nama:'Kab. Lamandau'},
+    {id:'223',nama:'Kab. Murung Raya'},{id:'224',nama:'Kota Palangkaraya'},{id:'225',nama:'Kab. Pulang Pisau'},
+    {id:'226',nama:'Kab. Seruyan'},{id:'227',nama:'Kab. Sukamara'},
+  ],
+  '15':[ // Kalimantan Timur
+    {id:'228',nama:'Kota Balikpapan'},{id:'229',nama:'Kab. Berau'},{id:'230',nama:'Kota Bontang'},
+    {id:'231',nama:'Kab. Kutai Barat'},{id:'232',nama:'Kab. Kutai Kartanegara'},{id:'233',nama:'Kab. Kutai Timur'},
+    {id:'234',nama:'Kab. Mahakam Hulu'},{id:'235',nama:'Kab. Paser'},{id:'236',nama:'Kab. Penajam Paser Utara'},
+    {id:'237',nama:'Kota Samarinda'},
+  ],
+  '16':[ // Kalimantan Utara
+    {id:'238',nama:'Kab. Bulungan'},{id:'239',nama:'Kab. Malinau'},{id:'240',nama:'Kab. Nunukan'},
+    {id:'241',nama:'Kab. Tana Tidung'},{id:'242',nama:'Kota Tarakan'},
+  ],
+  '17':[ // Kepulauan Riau
+    {id:'243',nama:'Kota Batam'},{id:'244',nama:'Kab. Bintan'},{id:'245',nama:'Kab. Karimun'},
+    {id:'246',nama:'Kab. Kepulauan Anambas'},{id:'247',nama:'Kab. Lingga'},{id:'248',nama:'Kab. Natuna'},
+    {id:'249',nama:'Kota Tanjungpinang'},
+  ],
+  '18':[ // Lampung
+    {id:'250',nama:'Kab. Lampung Barat'},{id:'251',nama:'Kota Bandar Lampung'},{id:'252',nama:'Kab. Lampung Selatan'},
+    {id:'253',nama:'Kab. Lampung Tengah'},{id:'254',nama:'Kab. Lampung Timur'},{id:'255',nama:'Kab. Lampung Utara'},
+    {id:'256',nama:'Kab. Mesuji'},{id:'257',nama:'Kab. Pesawaran'},{id:'258',nama:'Kab. Pesisir Barat'},
+    {id:'259',nama:'Kab. Pringsewu'},{id:'260',nama:'Kab. Tanggamus'},{id:'261',nama:'Kota Metro'},
+    {id:'262',nama:'Kab. Tulang Bawang'},{id:'263',nama:'Kab. Tulang Bawang Barat'},{id:'264',nama:'Kab. Way Kanan'},
+  ],
+  '19':[ // Maluku
+    {id:'265',nama:'Kab. Buru'},{id:'266',nama:'Kab. Buru Selatan'},{id:'267',nama:'Kab. Kepulauan Aru'},
+    {id:'268',nama:'Kab. Maluku Barat Daya'},{id:'269',nama:'Kab. Maluku Tengah'},{id:'270',nama:'Kab. Maluku Tenggara'},
+    {id:'271',nama:'Kab. Maluku Tenggara Barat'},{id:'272',nama:'Kota Ambon'},{id:'273',nama:'Kota Tual'},
+    {id:'274',nama:'Kab. Seram Bagian Barat'},{id:'275',nama:'Kab. Seram Bagian Timur'},
+  ],
+  '20':[ // Maluku Utara
+    {id:'276',nama:'Kab. Halmahera Barat'},{id:'277',nama:'Kab. Halmahera Tengah'},{id:'278',nama:'Kab. Halmahera Selatan'},
+    {id:'279',nama:'Kab. Halmahera Timur'},{id:'280',nama:'Kab. Halmahera Utara'},{id:'281',nama:'Kab. Kepulauan Sula'},
+    {id:'282',nama:'Kab. Pulau Morotai'},{id:'283',nama:'Kab. Pulau Taliabu'},{id:'284',nama:'Kota Ternate'},
+    {id:'285',nama:'Kota Tidore Kepulauan'},
+  ],
+  '21':[ // NTB
+    {id:'286',nama:'Kota Bima'},{id:'287',nama:'Kab. Bima'},{id:'288',nama:'Kab. Dompu'},
+    {id:'289',nama:'Kab. Lombok Barat'},{id:'290',nama:'Kab. Lombok Tengah'},{id:'291',nama:'Kab. Lombok Timur'},
+    {id:'292',nama:'Kab. Lombok Utara'},{id:'293',nama:'Kota Mataram'},{id:'294',nama:'Kab. Sumbawa'},
+    {id:'295',nama:'Kab. Sumbawa Barat'},
+  ],
+  '22':[ // NTT
+    {id:'296',nama:'Kab. Alor'},{id:'297',nama:'Kab. Belu'},{id:'298',nama:'Kab. Ende'},
+    {id:'299',nama:'Kab. Flores Timur'},{id:'300',nama:'Kab. Kupang'},{id:'301',nama:'Kota Kupang'},
+    {id:'302',nama:'Kab. Lembata'},{id:'303',nama:'Kab. Malaka'},{id:'304',nama:'Kab. Manggarai'},
+    {id:'305',nama:'Kab. Manggarai Barat'},{id:'306',nama:'Kab. Manggarai Timur'},{id:'307',nama:'Kab. Nagekeo'},
+    {id:'308',nama:'Kab. Ngada'},{id:'309',nama:'Kab. Rote Ndao'},{id:'310',nama:'Kab. Sabu Raijua'},
+    {id:'311',nama:'Kab. Sikka'},{id:'312',nama:'Kab. Sumba Barat'},{id:'313',nama:'Kab. Sumba Barat Daya'},
+    {id:'314',nama:'Kab. Sumba Tengah'},{id:'315',nama:'Kab. Sumba Timur'},{id:'316',nama:'Kab. Timor Tengah Selatan'},
+    {id:'317',nama:'Kab. Timor Tengah Utara'},
+  ],
+  '23':[ // Papua
+    {id:'318',nama:'Kab. Asmat'},{id:'319',nama:'Kota Jayapura'},{id:'320',nama:'Kab. Jayapura'},
+    {id:'321',nama:'Kab. Jayawijaya'},{id:'322',nama:'Kab. Keerom'},{id:'323',nama:'Kab. Kepulauan Yapen'},
+    {id:'324',nama:'Kab. Mamberamo Raya'},{id:'325',nama:'Kab. Sarmi'},{id:'326',nama:'Kab. Supiori'},
+    {id:'327',nama:'Kab. Waropen'},{id:'328',nama:'Kab. Biak Numfor'},
+  ],
+  '24':[ // Papua Barat
+    {id:'329',nama:'Kab. Fakfak'},{id:'330',nama:'Kab. Kaimana'},{id:'331',nama:'Kab. Manokwari'},
+    {id:'332',nama:'Kab. Manokwari Selatan'},{id:'333',nama:'Kab. Maybrat'},{id:'334',nama:'Kab. Pegunungan Arfak'},
+    {id:'335',nama:'Kab. Raja Ampat'},{id:'336',nama:'Kab. Sorong'},{id:'337',nama:'Kota Sorong'},
+    {id:'338',nama:'Kab. Sorong Selatan'},{id:'339',nama:'Kab. Tambrauw'},{id:'340',nama:'Kab. Teluk Bintuni'},
+    {id:'341',nama:'Kab. Teluk Wondama'},
+  ],
+  '25':[ // Riau
+    {id:'342',nama:'Kota Dumai'},{id:'343',nama:'Kab. Bengkalis'},{id:'344',nama:'Kab. Indragiri Hilir'},
+    {id:'345',nama:'Kab. Indragiri Hulu'},{id:'346',nama:'Kab. Kampar'},{id:'347',nama:'Kab. Kepulauan Meranti'},
+    {id:'348',nama:'Kab. Kuantan Singingi'},{id:'349',nama:'Kab. Pelalawan'},{id:'350',nama:'Kota Pekanbaru'},
+    {id:'351',nama:'Kab. Rokan Hilir'},{id:'352',nama:'Kab. Rokan Hulu'},{id:'353',nama:'Kab. Siak'},
+  ],
+  '26':[ // Sulawesi Barat
+    {id:'354',nama:'Kab. Majene'},{id:'355',nama:'Kab. Mamasa'},{id:'356',nama:'Kab. Mamuju'},
+    {id:'357',nama:'Kab. Mamuju Tengah'},{id:'358',nama:'Kab. Mamuju Utara'},{id:'359',nama:'Kab. Polewali Mandar'},
+  ],
+  '27':[ // Sulawesi Selatan
+    {id:'360',nama:'Kota Makassar'},{id:'361',nama:'Kab. Bantaeng'},{id:'362',nama:'Kab. Barru'},
+    {id:'363',nama:'Kab. Bone'},{id:'364',nama:'Kab. Bulukumba'},{id:'365',nama:'Kab. Enrekang'},
+    {id:'366',nama:'Kab. Gowa'},{id:'367',nama:'Kab. Jeneponto'},{id:'368',nama:'Kab. Kepulauan Selayar'},
+    {id:'369',nama:'Kab. Luwu'},{id:'370',nama:'Kab. Luwu Timur'},{id:'371',nama:'Kab. Luwu Utara'},
+    {id:'372',nama:'Kab. Maros'},{id:'373',nama:'Kab. Pangkajene Kepulauan'},{id:'374',nama:'Kab. Pinrang'},
+    {id:'375',nama:'Kab. Sidenreng Rappang'},{id:'376',nama:'Kab. Sinjai'},{id:'377',nama:'Kab. Soppeng'},
+    {id:'378',nama:'Kota Palopo'},{id:'379',nama:'Kota Parepare'},{id:'380',nama:'Kab. Takalar'},
+    {id:'381',nama:'Kab. Tana Toraja'},{id:'382',nama:'Kab. Toraja Utara'},{id:'383',nama:'Kab. Wajo'},
+  ],
+  '28':[ // Sulawesi Tengah
+    {id:'384',nama:'Kab. Banggai'},{id:'385',nama:'Kab. Banggai Kepulauan'},{id:'386',nama:'Kab. Banggai Laut'},
+    {id:'387',nama:'Kab. Buol'},{id:'388',nama:'Kab. Donggala'},{id:'389',nama:'Kab. Morowali'},
+    {id:'390',nama:'Kab. Morowali Utara'},{id:'391',nama:'Kab. Parigi Moutong'},{id:'392',nama:'Kota Palu'},
+    {id:'393',nama:'Kab. Poso'},{id:'394',nama:'Kab. Sigi'},{id:'395',nama:'Kab. Tojo Una-Una'},
+    {id:'396',nama:'Kab. Tolitoli'},
+  ],
+  '29':[ // Sulawesi Tenggara
+    {id:'397',nama:'Kab. Bombana'},{id:'398',nama:'Kab. Buton'},{id:'399',nama:'Kab. Buton Selatan'},
+    {id:'400',nama:'Kab. Buton Tengah'},{id:'401',nama:'Kab. Buton Utara'},{id:'402',nama:'Kab. Kolaka'},
+    {id:'403',nama:'Kab. Kolaka Timur'},{id:'404',nama:'Kab. Kolaka Utara'},{id:'405',nama:'Kab. Konawe'},
+    {id:'406',nama:'Kab. Konawe Kepulauan'},{id:'407',nama:'Kab. Konawe Selatan'},{id:'408',nama:'Kab. Konawe Utara'},
+    {id:'409',nama:'Kab. Muna'},{id:'410',nama:'Kab. Muna Barat'},{id:'411',nama:'Kota Baubau'},
+    {id:'412',nama:'Kota Kendari'},{id:'413',nama:'Kab. Wakatobi'},
+  ],
+  '30':[ // Sulawesi Utara
+    {id:'414',nama:'Kab. Bolaang Mongondow'},{id:'415',nama:'Kab. Bolaang Mongondow Selatan'},{id:'416',nama:'Kab. Bolaang Mongondow Timur'},
+    {id:'417',nama:'Kab. Bolaang Mongondow Utara'},{id:'418',nama:'Kab. Kepulauan Sangihe'},{id:'419',nama:'Kab. Kepulauan Siau Tagulandang Biaro'},
+    {id:'420',nama:'Kab. Kepulauan Talaud'},{id:'421',nama:'Kab. Minahasa'},{id:'422',nama:'Kab. Minahasa Selatan'},
+    {id:'423',nama:'Kab. Minahasa Tenggara'},{id:'424',nama:'Kab. Minahasa Utara'},{id:'425',nama:'Kota Bitung'},
+    {id:'426',nama:'Kota Kotamobagu'},{id:'427',nama:'Kota Manado'},{id:'428',nama:'Kota Tomohon'},
+  ],
+  '31':[ // Sumatera Barat
+    {id:'429',nama:'Kota Bukittinggi'},{id:'430',nama:'Kab. Agam'},{id:'431',nama:'Kab. Dharmasraya'},
+    {id:'432',nama:'Kab. Kepulauan Mentawai'},{id:'433',nama:'Kab. Lima Puluh Kota'},{id:'434',nama:'Kota Padang'},
+    {id:'435',nama:'Kab. Padang Lawas'},{id:'436',nama:'Kab. Padang Pariaman'},{id:'437',nama:'Kota Padangpanjang'},
+    {id:'438',nama:'Kota Pariaman'},{id:'439',nama:'Kab. Pasaman'},{id:'440',nama:'Kab. Pasaman Barat'},
+    {id:'441',nama:'Kota Payakumbuh'},{id:'442',nama:'Kab. Pesisir Selatan'},{id:'443',nama:'Kab. Sijunjung'},
+    {id:'444',nama:'Kab. Solok'},{id:'445',nama:'Kota Solok'},{id:'446',nama:'Kab. Solok Selatan'},
+    {id:'447',nama:'Kota Sawahlunto'},{id:'448',nama:'Kab. Tanah Datar'},
+  ],
+  '32':[ // Sumatera Selatan
+    {id:'449',nama:'Kab. Banyuasin'},{id:'450',nama:'Kab. Empat Lawang'},{id:'451',nama:'Kab. Lahat'},
+    {id:'452',nama:'Kab. Muara Enim'},{id:'453',nama:'Kab. Musi Banyuasin'},{id:'454',nama:'Kab. Musi Rawas'},
+    {id:'455',nama:'Kab. Musi Rawas Utara'},{id:'456',nama:'Kab. Ogan Ilir'},{id:'457',nama:'Kab. Ogan Komering Ilir'},
+    {id:'458',nama:'Kab. Ogan Komering Ulu'},{id:'459',nama:'Kab. Ogan Komering Ulu Selatan'},{id:'460',nama:'Kab. Ogan Komering Ulu Timur'},
+    {id:'461',nama:'Kota Pagar Alam'},{id:'462',nama:'Kota Palembang'},{id:'463',nama:'Kab. Penukal Abab Lematang Ilir'},
+    {id:'464',nama:'Kota Prabumulih'},{id:'465',nama:'Kab. PALI'},
+  ],
+  '33':[ // Sumatera Utara
+    {id:'466',nama:'Kota Binjai'},{id:'467',nama:'Kab. Asahan'},{id:'468',nama:'Kab. Batubara'},
+    {id:'469',nama:'Kab. Dairi'},{id:'470',nama:'Kab. Deli Serdang'},{id:'471',nama:'Kab. Humbang Hasundutan'},
+    {id:'472',nama:'Kab. Karo'},{id:'473',nama:'Kota Gunungsitoli'},{id:'474',nama:'Kab. Labuhanbatu'},
+    {id:'475',nama:'Kab. Labuhanbatu Selatan'},{id:'476',nama:'Kab. Labuhanbatu Utara'},{id:'477',nama:'Kab. Langkat'},
+    {id:'478',nama:'Kab. Mandailing Natal'},{id:'479',nama:'Kab. Nias'},{id:'480',nama:'Kab. Nias Barat'},
+    {id:'481',nama:'Kab. Nias Selatan'},{id:'482',nama:'Kab. Nias Utara'},{id:'483',nama:'Kab. Padang Lawas Utara'},
+    {id:'484',nama:'Kota Padang Sidempuan'},{id:'485',nama:'Kab. Pakpak Bharat'},{id:'486',nama:'Kab. Samosir'},
+    {id:'487',nama:'Kab. Serdang Bedagai'},{id:'488',nama:'Kota Sibolga'},{id:'489',nama:'Kab. Simalungun'},
+    {id:'490',nama:'Kab. Tapanuli Selatan'},{id:'491',nama:'Kab. Tapanuli Tengah'},{id:'492',nama:'Kab. Tapanuli Utara'},
+    {id:'493',nama:'Kota Tanjungbalai'},{id:'494',nama:'Kota Tebing Tinggi'},{id:'495',nama:'Kota Medan'},
+    {id:'496',nama:'Kota Pematangsiantar'},{id:'497',nama:'Kab. Toba'},
+  ],
+  '35':[ // Papua Pegunungan
+    {id:'498',nama:'Kab. Jayawijaya'},{id:'499',nama:'Kab. Lanny Jaya'},{id:'500',nama:'Kab. Mamberamo Tengah'},
+    {id:'501',nama:'Kab. Nduga'},{id:'502',nama:'Kab. Pegunungan Bintang'},{id:'503',nama:'Kab. Tolikara'},
+    {id:'504',nama:'Kab. Yahukimo'},{id:'505',nama:'Kab. Yalimo'},
+  ],
+  '36':[ // Papua Selatan
+    {id:'506',nama:'Kab. Asmat'},{id:'507',nama:'Kab. Boven Digoel'},{id:'508',nama:'Kab. Mappi'},{id:'509',nama:'Kab. Merauke'},
+  ],
+  '37':[ // Papua Barat Daya
+    {id:'510',nama:'Kab. Maybrat'},{id:'511',nama:'Kab. Raja Ampat'},{id:'512',nama:'Kab. Sorong'},
+    {id:'513',nama:'Kota Sorong'},{id:'514',nama:'Kab. Sorong Selatan'},{id:'515',nama:'Kab. Tambrauw'},
+  ],
+  '38':[ // Papua Tengah
+    {id:'516',nama:'Kab. Deiyai'},{id:'517',nama:'Kab. Dogiyai'},{id:'518',nama:'Kab. Intan Jaya'},
+    {id:'519',nama:'Kab. Mimika'},{id:'520',nama:'Kab. Nabire'},{id:'521',nama:'Kab. Paniai'},
+    {id:'522',nama:'Kab. Puncak'},{id:'523',nama:'Kab. Puncak Jaya'},
+  ],
+};
+
+// ── Provinsi & Kota (100% lokal, tanpa API) ──────────────────────────
+function loadProvinsi() {
+  const sel = document.getElementById('co-prov');
+  if (!sel) return;
+  sel.innerHTML = '<option value="">-- Pilih Provinsi --</option>';
+  DATA_PROVINSI.forEach(p => {
+    const opt = document.createElement('option');
+    opt.value = p.id;
+    opt.textContent = p.nama;
+    opt.dataset.nama = p.nama;
+    sel.appendChild(opt);
+  });
+  const selKota = document.getElementById('co-city');
+  if (selKota) { selKota.innerHTML = '<option value="">-- Pilih Kota --</option>'; selKota.disabled = true; }
+  selectedCityId = ''; selectedCityName = ''; selectedProvName = '';
+}
+
+function initProvinsi() { loadProvinsi(); }
+
+function onProvChange(provId) {
+  const sel = document.getElementById('co-prov');
+  const provOpt = sel ? sel.options[sel.selectedIndex] : null;
+  const selKota = document.getElementById('co-city');
+  selectedCityId = ''; selectedCityName = ''; selectedProvName = '';
+  document.getElementById('shipping-options-wrap').innerHTML =
+    '<div style="text-align:center;padding:1.5rem;color:#7A7060;font-size:13px">📍 Pilih kota tujuan dulu untuk melihat ongkir</div>';
+  if (!provId || !selKota) {
+    if (selKota) { selKota.innerHTML = '<option value="">-- Pilih Kota --</option>'; selKota.disabled = true; }
+    return;
+  }
+  selectedProvName = provOpt ? provOpt.dataset.nama : '';
+  const kotaList = DATA_KOTA[provId] || [];
+  selKota.innerHTML = '<option value="">-- Pilih Kota --</option>';
+  kotaList.forEach(k => {
+    const opt = document.createElement('option');
+    opt.value = k.id;
+    opt.textContent = k.nama;
+    opt.dataset.nama = k.nama;
+    selKota.appendChild(opt);
+  });
+  selKota.disabled = false;
+}
+
+function onKotaChange(kotaId, optEl) {
+  if (!kotaId) { selectedCityId = ''; selectedCityName = ''; return; }
+  selectedCityId = kotaId;
+  selectedCityName = optEl ? (optEl.dataset.nama || optEl.textContent) : '';
+  hitungOngkir();
+}
+
+function toggleManualLoc(checked) {
+  const wrap = document.getElementById('manual-loc-wrap');
+  const selProv = document.getElementById('co-prov');
+  const selKota = document.getElementById('co-city');
+  if (checked) {
+    wrap.style.display = 'block';
+    selProv.disabled = true; selKota.disabled = true;
+    const pManual = document.getElementById('co-prov-manual');
+    const kManual = document.getElementById('co-city-manual');
+    if (selProv.selectedIndex > 0 && pManual && !pManual.value)
+      pManual.value = selProv.options[selProv.selectedIndex].dataset.nama || '';
+    if (selKota.selectedIndex > 0 && kManual && !kManual.value)
+      kManual.value = selKota.options[selKota.selectedIndex].dataset.nama || '';
+  } else {
+    wrap.style.display = 'none';
+    selProv.disabled = false; selKota.disabled = false;
+  }
+}
+
+function onProvManual(val) { selectedProvName = val; }
+
+function onKotaManual(val) {
+  selectedCityId = '';
+  selectedCityName = val;
+  if (val) {
+    hitungOngkir();
+  }
+}
+
+async function hitungOngkir() {
+  if (!selectedProvName && !selectedCityName) return;
+
+  const wrap = document.getElementById('shipping-options-wrap');
+  wrap.innerHTML = '<div style="text-align:center;padding:1.25rem;color:#7A7060;font-size:13px">⏳ Menghitung ongkir...</div>';
+
+  try {
+    const fd = new FormData();
+    fd.append('provinsi', selectedProvName || '');
+    fd.append('metode', 'Pengiriman');
+    fd.append('csrfmiddlewaretoken', getCsrfToken());
+
+    const res = await fetch('/cek-ongkir/', { method: 'POST', body: fd });
+    const data = await res.json();
+    const harga = data.ongkir || 0;
+    const isJawa = data.jawa;
+
+    const opsiPengiriman = [
+      { nama: 'Pengiriman Reguler', harga: harga, etd: isJawa ? '2-4 hari kerja' : '5-7 hari kerja' },
+      { nama: 'Pengiriman Ekspres', harga: Math.round(harga * 1.6), etd: isJawa ? '1-2 hari kerja' : '3-4 hari kerja' },
+    ];
+
+    let html = '<div class="radio-opts">';
+    opsiPengiriman.forEach((opsi, i) => {
+      const cls = i === 0 ? 'radio-opt selected' : 'radio-opt';
+      if (i === 0) { shippingCost = opsi.harga; renderCheckout(); }
+      html += `
+        <label class="${cls}" onclick="selectShipping(this,${opsi.harga},'${opsi.nama}')">
+          <input type="radio" name="ship" ${i === 0 ? 'checked' : ''}>
+          <div class="radio-opt-info">
+            <h4>${opsi.nama}</h4>
+            <p>Estimasi ${opsi.etd}</p>
+          </div>
+          <span style="margin-left:auto;font-weight:700;color:var(--accent)">Rp${opsi.harga.toLocaleString('id')}</span>
+        </label>`;
+    });
+    html += '</div>';
+    wrap.innerHTML = html;
+  } catch(e) {
+    console.error('Error cek ongkir:', e);
+    wrap.innerHTML = '<div style="font-size:12px;color:#C0392B;padding:.75rem;background:#FEE2E2;border-radius:8px">⚠️ Gagal menghitung ongkir. Pilih "Ambil di Toko" atau coba lagi.</div>';
+  }
+}
+
+function getCsrfToken() {
+  return document.cookie.split(';').map(c=>c.trim()).find(c=>c.startsWith('csrftoken='))?.split('=')[1] || '';
+}
+
+// Panggil saat halaman checkout dibuka
+function initCheckout() {
+  loadProvinsi();
+}
+
+function selectShipping(el,cost,name){
+  document.querySelectorAll('[name="ship"]').forEach(x=>x.closest('.radio-opt').classList.remove('selected'));
+  el.classList.add('selected'); shippingCost=parseInt(cost); renderCheckout();
+}
+function selectPayment(el,method){
+  document.querySelectorAll('[name="pay"]').forEach(x=>x.closest('.radio-opt').classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+function renderCheckout(){
+  const subtotal=cart.reduce((a,i)=>a+i.price*i.qty,0);
+  const totalAkhir=subtotal+shippingCost;
+  document.getElementById('co-subtotal').textContent=fmt(subtotal);
+  document.getElementById('co-ship-cost').textContent=shippingCost===0?'Gratis':fmt(shippingCost);
+  document.getElementById('co-total').textContent=fmt(totalAkhir);
+  document.getElementById('checkout-items').innerHTML=
+    cart.slice(0,3).map(i=>`<div class="summary-row"><span>${i.name} x${i.qty}</span><span>${fmt(i.price*i.qty)}</span></div>`).join('')+
+    (cart.length>3?`<div class="summary-row"><span>+${cart.length-3} produk lainnya</span><span></span></div>`:'')+
+    `<div id="poin-section" style="margin:.75rem 0;padding:.875rem;background:#FDF3E0;border:1px solid #F0D49A;border-radius:10px;font-size:13px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <span style="font-weight:600;color:#1C1A16">⭐ Poin Saya</span>
+        <span id="poin-info" style="color:#C17F24;font-weight:600">Memuat...</span>
+      </div>
+      <div id="poin-action" style="margin-top:.5rem"></div>
+    </div>`;
+  const coNameEl=document.getElementById('co-name');
+  if(loggedIn&&coNameEl&&!coNameEl.value) coNameEl.value=userName;
+  if(loggedIn) muatPoin();
+}
+
+async function placeOrder(){
+  const name=document.getElementById('co-name').value.trim();
+  const phone=document.getElementById('co-phone').value.trim();
+  const addr=document.getElementById('co-addr').value.trim();
+  // Ambil provinsi & kota (bisa dari select atau input manual)
+  const isManual = document.getElementById('chk-manual-loc') && document.getElementById('chk-manual-loc').checked;
+  const provNama = isManual
+    ? (document.getElementById('co-prov-manual').value.trim())
+    : selectedProvName;
+  const kotaNama = isManual
+    ? (document.getElementById('co-city-manual').value.trim())
+    : selectedCityName;
+  if(!name||!phone||!addr){ showToast('Lengkapi nama, telepon, dan alamat terlebih dahulu'); return; }
+  if(!provNama||!kotaNama){ showToast('Pilih provinsi dan kota/kabupaten terlebih dahulu'); return; }
+  if(cart.length===0){ showToast('Keranjang kosong'); return; }
+  const selectedShip=document.querySelector('[name="ship"]:checked');
+  const selectedPay=document.querySelector('[name="pay"]:checked');
+  const subtotal=cart.reduce((a,i)=>a+i.price*i.qty,0);
+  const alamatLengkap = addr + ', ' + kotaNama + ', ' + provNama;
+  const data={
+    nama:name, telepon:phone, alamat:alamatLengkap,
+    pengiriman:selectedShip?selectedShip.closest('.radio-opt').querySelector('h4').textContent:'JNE Reguler',
+    pembayaran:selectedPay?selectedPay.closest('.radio-opt').querySelector('h4').textContent:'Transfer Bank',
+    ongkir:shippingCost,
+    total:subtotal+shippingCost,
+    items:cart.map(i=>({id:i.id,name:i.name,emoji:i.emoji,price:i.price,qty:i.qty}))
+  };
+  try {
+    const res=await fetch('/buat-pesanan/',{method:'POST',headers:{'Content-Type':'application/json','X-CSRFToken':getCookie('csrftoken')},body:JSON.stringify(data)});
+    const result=await res.json();
+    if(result.success){ cart=[]; updateCartCount(); window.location.href='/pembayaran/'+result.id+'/'; }
+    else if(result.errors){ showToast('⚠️ '+result.errors[0]); }
+  } catch(e){ showToast('❌ Terjadi kesalahan, coba lagi'); }
+}
+
+const produkDjango=[
+  {% for p in produk_db %}
+  {
+    id:{{ p.id }},
+    name:"{{ p.nama|escapejs }}",
+    cat:"{{ p.kategori|escapejs }}",
+    desc:"{{ p.deskripsi|escapejs }}",
+    price:{{ p.harga }},
+    weight:"{{ p.berat|escapejs }}",
+    stock:{{ p.stok }},
+    emoji:"{{ p.emoji|escapejs }}",
+    gambar:"{% if p.gambar %}{{ p.gambar.url|escapejs }}{% endif %}",
+    tersedia:{{ p.tersedia|yesno:"true,false" }},
+    badge:null,
+  },
+  {% endfor %}
+];
+
+if(produkDjango.length>0){ products.length=0; produkDjango.forEach(p=>products.push(p)); }
+{% if user.is_authenticated %}loggedIn=true; userName="{{ user.username|escapejs }}";{% endif %}
+
+renderFeatured();
+renderAllProducts();
+</script>
+
+<!-- MODAL LOGIN -->
+<style>
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9999;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+.modal-overlay.open{display:flex}
+.modal-box{background:white;border-radius:20px;padding:2.5rem;width:100%;max-width:420px;margin:1rem;box-shadow:0 24px 64px rgba(0,0,0,.25);animation:modalIn .25s ease;position:relative}
+@keyframes modalIn{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+.modal-logo{text-align:center;margin-bottom:1.75rem}
+.modal-logo-icon{font-size:44px;margin-bottom:.5rem}
+.modal-logo h2{font-family:'Playfair Display',serif;font-size:26px;color:#C17F24}
+.modal-logo p{color:#7A7060;font-size:13px;margin-top:4px}
+.modal-tabs{display:flex;border-bottom:2px solid #F0EAE0;margin-bottom:1.5rem}
+.modal-tab{flex:1;text-align:center;padding:10px;font-size:13px;font-weight:600;cursor:pointer;color:#7A7060;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .2s}
+.modal-tab.active{color:#C17F24;border-bottom-color:#C17F24}
+.modal-panel{display:none}.modal-panel.active{display:block}
+.modal-fg{margin-bottom:1.1rem}
+.modal-fg label{display:block;font-size:13px;font-weight:500;color:#1C1A16;margin-bottom:5px}
+.modal-fg input,.modal-fg select{width:100%;padding:11px 14px;border:1.5px solid #E5DDD0;border-radius:10px;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;transition:border .2s;background:white}
+.modal-fg input:focus{border-color:#C17F24}
+.modal-btn{width:100%;background:#C17F24;color:white;border:none;border-radius:10px;padding:13px;font-size:15px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:.25rem;transition:all .2s}
+.modal-btn:hover{background:#a86b1a}
+.modal-divider{display:flex;align-items:center;gap:.75rem;color:#B0A090;font-size:12px;margin:1rem 0}
+.modal-divider::before,.modal-divider::after{content:'';flex:1;height:1px;background:#E5DDD0}
+.modal-admin-btn{width:100%;background:#1C1A16;color:white;border:none;border-radius:10px;padding:12px;font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px}
+.modal-admin-btn:hover{background:#333}
+.modal-error{background:#FEE2E2;color:#C0392B;border-radius:8px;padding:9px 13px;font-size:13px;margin-bottom:1rem;text-align:center;display:none}
+.modal-close{position:absolute;top:14px;right:18px;background:none;border:none;font-size:22px;cursor:pointer;color:#B0A090;line-height:1}
+</style>
+
+<div class="modal-overlay" id="loginModal" onclick="closeModalOutside(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeLoginModal()">×</button>
+    <div class="modal-logo">
+      <div class="modal-logo-icon">🌾</div>
+      <h2>Bramas Jaya</h2>
+      <p>Masuk atau daftar untuk melanjutkan</p>
+    </div>
+    <div class="modal-tabs">
+      <div class="modal-tab active" onclick="switchTab('masuk')">Masuk</div>
+      <div class="modal-tab" onclick="switchTab('daftar')">Daftar</div>
+    </div>
+    <div class="modal-panel active" id="panel-masuk">
+      <div class="modal-error" id="login-error"></div>
+      <div class="modal-fg"><label>Username</label><input type="text" id="m-username" placeholder="Masukkan username" autocomplete="username"></div>
+      <div class="modal-fg"><label>Kata Sandi</label><input type="password" id="m-password" placeholder="Masukkan kata sandi" autocomplete="current-password" onkeydown="if(event.key==='Enter')submitLogin()"></div>
+      <button class="modal-btn" onclick="submitLogin()">Masuk →</button>
+      <div class="modal-divider">atau</div>
+      <button class="modal-admin-btn" onclick="submitLoginAdmin()">🔐 Masuk sebagai Admin</button>
+    </div>
+    <div class="modal-panel" id="panel-daftar">
+      <div class="modal-error" id="reg-error"></div>
+      <div class="modal-fg"><label>Nama Lengkap</label><input type="text" id="m-reg-name" placeholder="Nama Anda"></div>
+      <div class="modal-fg"><label>Email</label><input type="email" id="m-reg-email" placeholder="nama@email.com"></div>
+      <div class="modal-fg"><label>No. Telepon</label><input type="tel" id="m-reg-phone" placeholder="08xxxxxxxxxx"></div>
+      <div class="modal-fg"><label>Jenis Pelanggan</label>
+        <select id="m-reg-type"><option>Pembeli Rumahan</option><option>Pemilik Bakeri / Kue</option><option>Katering</option><option>Restoran</option><option>Reseller Tepung</option></select>
+      </div>
+      <div class="modal-fg"><label>Kata Sandi</label><input type="password" id="m-reg-pass" placeholder="Min. 8 karakter"></div>
+      <button class="modal-btn" onclick="submitRegister()">Daftar Sekarang</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DETAIL PRODUK -->
+<div class="detail-overlay" id="detailModal" onclick="closeDetailOutside(event)">
+  <div class="detail-box">
+    <button class="detail-close" onclick="closeDetailModal()">×</button>
+    <div class="detail-img" id="detail-img"></div>
+    <div class="detail-body">
+      <span class="detail-cat" id="detail-cat"></span>
+      <h2 class="detail-title" id="detail-title"></h2>
+      <p class="detail-desc" id="detail-desc"></p>
+      <div class="detail-meta">
+        <div class="detail-meta-item">📦 Berat: <b id="detail-weight"></b></div>
+        <div class="detail-meta-item">🏷️ Kategori: <b id="detail-cat2"></b></div>
+        <div class="detail-meta-item" id="detail-stock-wrap">📊 Stok: <b id="detail-stock"></b></div>
+      </div>
+      <div style="margin-top:1.5rem;border-top:1px solid var(--border);padding-top:1.25rem">
+        <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:.75rem">⭐ Ulasan Pelanggan</div>
+        <div id="ulasan-produk-container">
+          <p style="font-size:13px;color:var(--text2);text-align:center;padding:.5rem">Memuat ulasan...</p>
+        </div>
+      </div>
+      <div class="detail-footer">
+        <div class="detail-price-wrap">
+          <span class="price" id="detail-price"></span>
+          <span class="price-old" id="detail-old-price"></span>
+        </div>
+        <button class="detail-add-btn" id="detail-add-btn">+ Tambah ke Keranjang</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function openLoginModal(){ document.getElementById('loginModal').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeLoginModal(){ document.getElementById('loginModal').classList.remove('open'); document.body.style.overflow=''; }
+function closeModalOutside(e){ if(e.target===document.getElementById('loginModal')) closeLoginModal(); }
+function switchTab(tab){
+  document.querySelectorAll('.modal-tab').forEach((t,i)=>t.classList.toggle('active',i===(tab==='masuk'?0:1)));
+  document.getElementById('panel-masuk').classList.toggle('active',tab==='masuk');
+  document.getElementById('panel-daftar').classList.toggle('active',tab==='daftar');
+}
+function showModalError(id,msg){ const el=document.getElementById(id); el.textContent=msg; el.style.display='block'; }
+function hideModalErrors(){ document.querySelectorAll('.modal-error').forEach(e=>{ e.style.display='none'; }); }
+
+async function submitLogin(){
+  hideModalErrors();
+  const username=document.getElementById('m-username').value.trim();
+  const password=document.getElementById('m-password').value;
+  if(!username||!password){ showModalError('login-error','Username dan kata sandi wajib diisi'); return; }
+  const fd=new FormData();
+  fd.append('username',username); fd.append('password',password); fd.append('csrfmiddlewaretoken',getCookie('csrftoken'));
+  try {
+    const res=await fetch('/login/',{method:'POST',body:fd,headers:{'X-Requested-With':'XMLHttpRequest','Accept':'application/json'},credentials:'same-origin'});
+    const data=await res.json();
+    if(data.success){ if(data.redirect==='/admin/') window.location.href='/admin/'; else window.location.href='/home/'; }
+    else showModalError('login-error',data.error||'Login gagal');
+  } catch(e){ showModalError('login-error','Terjadi kesalahan, coba lagi'); }
+}
+
+function submitLoginAdmin(){ closeLoginModal(); window.location.href='/admin/login/?next=/admin/'; }
+
+async function submitRegister(){
+  hideModalErrors();
+  const nama=document.getElementById('m-reg-name').value.trim();
+  const email=document.getElementById('m-reg-email').value.trim();
+  const telepon=document.getElementById('m-reg-phone').value.trim();
+  const password=document.getElementById('m-reg-pass').value;
+  if(!nama||!email||!telepon||!password){ showModalError('reg-error','Semua kolom wajib diisi'); return; }
+  if(password.length<8){ showModalError('reg-error','Kata sandi minimal 8 karakter'); return; }
+  const fd=new FormData();
+  fd.append('nama',nama); fd.append('email',email); fd.append('telepon',telepon);
+  fd.append('password',password); fd.append('csrfmiddlewaretoken',getCookie('csrftoken'));
+  try {
+    const res=await fetch('/register/',{method:'POST',body:fd,headers:{'X-Requested-With':'XMLHttpRequest'}});
+    const data=await res.json();
+    if(data.success) window.location.href='/home/';
+    else showModalError('reg-error',data.error||'Pendaftaran gagal');
+  } catch(e){ showModalError('reg-error','Terjadi kesalahan, coba lagi'); }
+}
+
+async function muatPoin(){
+  if(!loggedIn) return;
+  try {
+    const res = await fetch('/cek-poin/?format=json', {headers:{'X-Requested-With':'XMLHttpRequest'}});
+    if(!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    const poinEl = document.getElementById('poin-info');
+    if(poinEl) poinEl.textContent = data.poin + ' poin';
+    const actionEl = document.getElementById('poin-action');
+    if(actionEl){
+      if(data.bisa_tukar){
+        actionEl.innerHTML = `<button id="btn-tukar-poin" onclick="tukarPoin()" style="background:#C17F24;color:white;border:none;border-radius:7px;padding:6px 14px;font-size:12px;font-weight:600;cursor:pointer">
+          🎁 Tukar ${data.target} poin → Diskon Rp${data.nilai_diskon.toLocaleString('id-ID')}
+        </button>`;
+      } else {
+        const sisa = data.target - data.poin;
+        actionEl.innerHTML = `<span style="color:#7A7060;font-size:12px">Butuh ${sisa} poin lagi untuk dapat diskon Rp${data.nilai_diskon.toLocaleString('id-ID')}</span>`;
+      }
+    }
+  } catch(e) {
+    const poinEl = document.getElementById('poin-info');
+    if(poinEl) poinEl.textContent = '-';
+  }
+}
+
+async function tukarPoin(){
+  const btn = document.getElementById('btn-tukar-poin');
+  if(btn) btn.disabled = true;
+  try {
+    const res = await fetch('/tukar-poin/', {
+      method: 'POST',
+      headers: {'X-CSRFToken': getCookie('csrftoken')}
+    });
+    if(!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    if(data.success){
+      showToast(data.keterangan);
+      renderCheckout();
+      muatPoin();
+    } else {
+      showToast('❌ ' + data.error);
+      if(btn) btn.disabled = false;
+    }
+  } catch(e) {
+    showToast('❌ Gagal menghubungi server');
+    if(btn) btn.disabled = false;
+  }
+}
+
+function openDetailModal(id){
+  const p=products.find(x=>x.id===id);
+  if(!p) return;
+  const stok=(p.stock!==undefined)?p.stock:999;
+  document.getElementById('detail-title').textContent=p.name;
+  document.getElementById('detail-desc').textContent=p.desc;
+  document.getElementById('detail-cat').textContent=p.cat;
+  document.getElementById('detail-cat2').textContent=p.cat;
+  document.getElementById('detail-weight').textContent=p.weight;
+  document.getElementById('detail-price').textContent=fmt(p.price);
+  document.getElementById('detail-old-price').textContent=p.oldPrice?fmt(p.oldPrice):'';
+
+  const imgEl=document.getElementById('detail-img');
+  imgEl.style.background=getBg(p.cat);
+  imgEl.innerHTML=p.gambar
+    ?`<img src="${p.gambar}" style="max-width:90%;max-height:90%;width:auto;height:auto;object-fit:contain">`
+    :`<span style="font-size:100px">${p.emoji}</span>`;
+
+  const stockWrap=document.getElementById('detail-stock-wrap');
+  const stockEl=document.getElementById('detail-stock');
+  if(p.stock!==undefined){
+    stockWrap.style.display='block';
+    stockEl.textContent=stok+' pcs';
+    stockEl.style.color=stok<=0?'#991B1B':stok<=5?'#92400E':'#065F46';
+  } else { stockWrap.style.display='none'; }
+
+  const btn=document.getElementById('detail-add-btn');
+  if(stok<=0){ btn.disabled=true; btn.textContent='Stok Habis'; btn.onclick=null; }
+  else { btn.disabled=false; btn.textContent='+ Tambah ke Keranjang'; btn.onclick=()=>{ addToCart(id); closeDetailModal(); }; }
+
+  document.getElementById('ulasan-produk-container').innerHTML='<p style="font-size:13px;color:#7A7060;text-align:center;padding:.5rem">Memuat ulasan...</p>';
+  lihatUlasanProduk(p.name);
+
+  document.getElementById('detailModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeDetailModal(){
+  document.getElementById('detailModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+function closeDetailOutside(e){
+  if(e.target===document.getElementById('detailModal')) closeDetailModal();
+}
+
+async function lihatUlasanProduk(namaProduk){
+  try {
+    const res=await fetch('/ulasan-produk/?produk='+encodeURIComponent(namaProduk));
+    const data=await res.json();
+    const rata=data.rata_rata;
+    let bintang='';
+    for(let i=1;i<=5;i++) bintang+=i<=Math.round(rata)?'★':'☆';
+    let html=`<div style="display:flex;align-items:center;gap:.5rem;margin-bottom:1rem">
+      <span style="font-size:20px;color:#C17F24;font-weight:700">${bintang}</span>
+      <span style="font-size:15px;font-weight:700;color:#1C1A16">${rata}</span>
+      <span style="font-size:13px;color:#7A7060">(${data.total} ulasan)</span>
+    </div>`;
+    if(data.ulasan.length===0){
+      html+=`<p style="font-size:13px;color:#7A7060;text-align:center;padding:1rem">Belum ada ulasan untuk produk ini.</p>`;
+    } else {
+      data.ulasan.forEach(u=>{
+        let s=''; for(let i=1;i<=5;i++) s+=i<=u.rating?'★':'☆';
+        html+=`<div style="border-top:1px solid #E5DDD0;padding:.875rem 0">
+          <div style="display:flex;justify-content:space-between;margin-bottom:.4rem">
+            <span style="font-size:13px;font-weight:600;color:#1C1A16">${u.user}</span>
+            <span style="font-size:11px;color:#7A7060">${u.tanggal}</span>
+          </div>
+          <div style="color:#C17F24;font-size:14px;margin-bottom:.3rem">${s}</div>
+          <p style="font-size:13px;color:#1C1A16;line-height:1.5">${u.komentar}</p>
+        </div>`;
+      });
+    }
+    document.getElementById('ulasan-produk-container').innerHTML=html;
+  } catch(e){
+    document.getElementById('ulasan-produk-container').innerHTML='<p style="font-size:13px;color:#7A7060;text-align:center;padding:1rem">Gagal memuat ulasan.</p>';
+  }
+}
+</script>
+
+<!-- ===== FOOTER ===== -->
+<footer style="background:#1C1A16;color:#B0A090;padding:3rem 2rem 2rem;margin-top:0">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem">
+    <div>
+      <h3 style="font-family:'Playfair Display',serif;color:#C17F24;font-size:22px;margin-bottom:.75rem">Bramas Jaya</h3>
+      <p style="font-size:13px;line-height:1.75;color:#9A8F80">Tepung berkualitas untuk kebutuhan dapur dan usaha Anda. Produk segar langsung dari penggilingan terpercaya.</p>
+      <div style="margin-top:1rem;display:flex;gap:.75rem">
+        <a href="https://wa.me/6281246020417?text=Halo%20Bramas%20Jaya%2C%20saya%20ingin%20bertanya%20tentang%20produk%20tepung%20Anda." target="_blank" title="WhatsApp" style="width:34px;height:34px;background:#25D366;border-radius:8px;display:flex;align-items:center;justify-content:center;text-decoration:none"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="20" height="20" fill="white"><path d="M24 4C13 4 4 13 4 24c0 3.6 1 7 2.7 9.9L4 44l10.4-2.7C17.2 43 20.5 44 24 44c11 0 20-9 20-20S35 4 24 4zm9 28.6c-.5-.2-2.9-1.4-3.3-1.6-.4-.2-.7-.2-1 .2-.3.4-1.2 1.6-1.5 1.9-.3.3-.5.4-1 .1-.5-.2-2-.7-3.8-2.3-1.4-1.2-2.4-2.8-2.6-3.2-.3-.5 0-.7.2-1 .2-.2.5-.5.7-.8.2-.3.3-.5.4-.8.1-.3 0-.6-.1-.8-.1-.2-1-2.5-1.4-3.4-.4-.9-.8-.8-1-.8h-.9c-.3 0-.8.1-1.2.6-.4.5-1.6 1.6-1.6 3.8s1.6 4.4 1.9 4.7c.2.3 3.2 4.9 7.8 6.8 1.1.5 1.9.7 2.6.9 1.1.3 2.1.3 2.9.2.9-.1 2.9-1.2 3.3-2.3.4-1.1.4-2.1.3-2.3-.1-.2-.4-.3-.9-.5z"/></svg></a>
+        <a href="https://www.instagram.com/bramasjaya?igsh=MW5rdTBnbGlkNmYxNA==" target="_blank" title="Instagram" style="width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;text-decoration:none;background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="19" height="19" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <h4 style="color:white;font-size:13px;font-weight:600;margin-bottom:1rem;letter-spacing:1.5px;text-transform:uppercase">Menu</h4>
+      <ul style="list-style:none;font-size:13px;line-height:2.2">
+        <li><a onclick="showPage('home')" style="color:#9A8F80;cursor:pointer;text-decoration:none;transition:color .2s" onmouseover="this.style.color='#C17F24'" onmouseout="this.style.color='#9A8F80'">Beranda</a></li>
+        <li><a onclick="showPage('products')" style="color:#9A8F80;cursor:pointer;text-decoration:none" onmouseover="this.style.color='#C17F24'" onmouseout="this.style.color='#9A8F80'">Katalog Produk</a></li>
+        <li><a href="/profil/" style="color:#9A8F80;text-decoration:none" onmouseover="this.style.color='#C17F24'" onmouseout="this.style.color='#9A8F80'">Profil & Pesanan</a></li>
+        <li><a href="/cek-poin/" style="color:#9A8F80;text-decoration:none" onmouseover="this.style.color='#C17F24'" onmouseout="this.style.color='#9A8F80'">Cek Poin Loyalitas</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 style="color:white;font-size:13px;font-weight:600;margin-bottom:1rem;letter-spacing:1.5px;text-transform:uppercase">Hubungi Kami</h4>
+      <div style="font-size:13px;line-height:2.2;color:#9A8F80">
+        <div>📱 <a href="https://wa.me/6281246020417" target="_blank" style="color:#C17F24;text-decoration:none">+62 812-4602-0417</a></div>
+        <div>📧 bramasjaya@email.com</div>
+        <div>📍 Purwokerto, Jawa Tengah</div>
+        <div style="margin-top:.75rem;font-size:12px;color:#6B5F50">Senin–Sabtu: 08.00–17.00 WIB</div>
+      </div>
+    </div>
+  </div>
+  <div style="max-width:1200px;margin:2rem auto 0;border-top:1px solid #2E2A25;padding-top:1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem">
+    <p style="font-size:12px;color:#6B5F50">© 2025 Bramas Jaya. Semua hak dilindungi.</p>
+    <p style="font-size:12px;color:#6B5F50">Dibuat dengan ❤️ untuk pelanggan setia kami</p>
+  </div>
+</footer>
+
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/6281246020417?text=Halo%20Bramas%20Jaya%2C%20saya%20ingin%20bertanya%20tentang%20produk%20tepung%20Anda."
+   target="_blank" id="wa-float"
+   style="position:fixed;bottom:1.75rem;right:1.75rem;background:#25D366;color:white;border-radius:50%;width:58px;height:58px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(37,211,102,.5);z-index:998;text-decoration:none;transition:transform .2s,box-shadow .2s"
+   onmouseover="this.style.transform='scale(1.12)';this.style.boxShadow='0 6px 28px rgba(37,211,102,.65)'"
+   onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 24px rgba(37,211,102,.5)'"
+   title="Chat WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="32" height="32" fill="white">
+    <path d="M24 4C13 4 4 13 4 24c0 3.6 1 7 2.7 9.9L4 44l10.4-2.7C17.2 43 20.5 44 24 44c11 0 20-9 20-20S35 4 24 4zm0 36c-3.1 0-6.1-.8-8.7-2.4l-.6-.4-6.2 1.6 1.7-6-.4-.6C8.2 29.9 7.5 27 7.5 24c0-9.1 7.4-16.5 16.5-16.5S40.5 14.9 40.5 24 33.1 40 24 40zm9-12.4c-.5-.2-2.9-1.4-3.3-1.6-.4-.2-.7-.2-1 .2-.3.4-1.2 1.6-1.5 1.9-.3.3-.5.4-1 .1-.5-.2-2-.7-3.8-2.3-1.4-1.2-2.4-2.8-2.6-3.2-.3-.5 0-.7.2-1 .2-.2.5-.5.7-.8.2-.3.3-.5.4-.8.1-.3 0-.6-.1-.8-.1-.2-1-2.5-1.4-3.4-.4-.9-.8-.8-1-.8h-.9c-.3 0-.8.1-1.2.6-.4.5-1.6 1.6-1.6 3.8s1.6 4.4 1.9 4.7c.2.3 3.2 4.9 7.8 6.8 1.1.5 1.9.7 2.6.9 1.1.3 2.1.3 2.9.2.9-.1 2.9-1.2 3.3-2.3.4-1.1.4-2.1.3-2.3-.1-.2-.4-.3-.9-.5z"/>
+  </svg>
+</a>
+
+</body>
+</html>

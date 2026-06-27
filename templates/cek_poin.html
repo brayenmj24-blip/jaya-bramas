@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poin Saya - Bramas Jaya</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#FDFCF8;--bg2:#F5F0E8;--text:#1C1A16;--text2:#7A7060;
+  --accent:#C17F24;--accent-light:#FDF3E0;--accent2:#F0D49A;
+  --border:#E5DDD0;--white:#FFFFFF;--danger:#C0392B;
+  --font-head:'Playfair Display',serif;--font-body:'DM Sans',sans-serif;
+}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-height:100vh}
+
+nav{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000;padding:0 2rem}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo h1{font-family:var(--font-head);font-size:20px;color:var(--accent);letter-spacing:-0.3px}
+.nav-logo span{color:var(--text2);font-size:11px;display:block;letter-spacing:2px;font-weight:500;text-transform:uppercase;margin-top:-2px}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{text-decoration:none;color:var(--text2);font-size:14px;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--accent)}
+.nav-user{background:none;border:1px solid var(--border);border-radius:8px;padding:8px 14px;font-size:13px;font-weight:500;cursor:pointer;font-family:var(--font-body);color:var(--text);text-decoration:none;transition:all .2s}
+.nav-user:hover{border-color:var(--accent);color:var(--accent)}
+
+.page-container{max-width:900px;margin:0 auto;padding:3rem 2rem}
+
+/* HERO POIN */
+.poin-hero{background:linear-gradient(135deg,#5C3D11 0%,#8B5E1A 45%,#C17F24 100%);border-radius:20px;padding:2.5rem;color:white;display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;position:relative;overflow:hidden}
+.poin-hero::after{content:'⭐';position:absolute;right:2rem;top:50%;transform:translateY(-50%);font-size:120px;opacity:.1;pointer-events:none}
+.poin-hero-left h2{font-family:var(--font-head);font-size:28px;margin-bottom:.4rem}
+.poin-hero-left p{font-size:14px;opacity:.8}
+.poin-total{text-align:right;position:relative;z-index:1}
+.poin-total .angka{font-family:var(--font-head);font-size:52px;font-weight:700;line-height:1}
+.poin-total .label{font-size:13px;opacity:.8;margin-top:4px}
+
+/* PROGRESS BAR */
+.progress-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin-bottom:2rem}
+.progress-card h3{font-size:16px;font-weight:700;margin-bottom:1rem;color:var(--text)}
+.progress-bar-wrap{background:var(--bg2);border-radius:100px;height:12px;overflow:hidden;margin-bottom:.75rem}
+.progress-bar-fill{background:linear-gradient(90deg,#C17F24,#F0A843);height:100%;border-radius:100px;transition:width .6s ease}
+.progress-info{display:flex;justify-content:space-between;font-size:13px;color:var(--text2)}
+.progress-info span:last-child{font-weight:600;color:var(--accent)}
+
+/* CARDS */
+.cards-row{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:2rem}
+.info-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.5rem}
+.info-card h3{font-size:14px;font-weight:600;color:var(--text2);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.5px;font-size:12px}
+.info-card .nilai{font-family:var(--font-head);font-size:28px;color:var(--accent)}
+.info-card p{font-size:12px;color:var(--text2);margin-top:.25rem}
+
+/* RIWAYAT */
+.riwayat-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.riwayat-head{padding:1.25rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.riwayat-head h3{font-size:16px;font-weight:700}
+.riwayat-item{display:flex;align-items:center;gap:1rem;padding:1rem 1.5rem;border-bottom:1px solid var(--border);transition:background .2s}
+.riwayat-item:last-child{border-bottom:none}
+.riwayat-item:hover{background:var(--bg)}
+.riwayat-icon{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.icon-tambah{background:#ECFDF5}
+.icon-kurang{background:#FEF2F2}
+.riwayat-info{flex:1}
+.riwayat-info h4{font-size:14px;font-weight:600;color:var(--text);margin-bottom:2px}
+.riwayat-info p{font-size:12px;color:var(--text2)}
+.riwayat-poin{font-size:16px;font-weight:700}
+.poin-plus{color:#065F46}
+.poin-minus{color:var(--danger)}
+
+.empty-state{text-align:center;padding:3rem 2rem;color:var(--text2)}
+.empty-state .emo{font-size:48px;margin-bottom:.75rem}
+.empty-state p{font-size:14px}
+
+.back-btn{display:inline-flex;align-items:center;gap:.5rem;color:var(--text2);text-decoration:none;font-size:14px;font-weight:500;margin-bottom:1.5rem;transition:color .2s}
+.back-btn:hover{color:var(--accent)}
+
+.badge-poin{display:inline-block;background:var(--accent-light);color:var(--accent);border:1px solid var(--accent2);border-radius:100px;padding:4px 14px;font-size:12px;font-weight:600}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/home/" style="text-decoration:none" class="nav-logo">
+      <h1>Bramas Jaya</h1>
+      <span>Toko Tepung Serba Guna</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/home/">Beranda</a></li>
+      <li><a href="/home/#produk">Produk</a></li>
+      <li><a href="/profil/">Profil Saya</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:.75rem">
+      <span style="font-size:13px;color:var(--text2);font-weight:500">Hai, {{ user.first_name|default:user.username }}</span>
+      <a href="/logout/" class="nav-user">Keluar</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-container">
+
+  <a href="/profil/" class="back-btn">← Kembali ke Profil</a>
+
+  <!-- HERO -->
+  <div class="poin-hero">
+    <div class="poin-hero-left">
+      <h2>Poin Saya ⭐</h2>
+      <p>Kumpulkan poin dari setiap pesanan selesai<br>dan tukarkan dengan diskon menarik!</p>
+      <div style="margin-top:1rem">
+        <span style="background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3);border-radius:100px;padding:5px 16px;font-size:12px;font-weight:600">
+          {{ user.first_name|default:user.username }}
+        </span>
+      </div>
+    </div>
+    <div class="poin-total">
+      <div class="angka">{{ poin.total_poin }}</div>
+      <div class="label">Total Poin</div>
+    </div>
+  </div>
+
+  <!-- PROGRESS MENUJU HADIAH -->
+  {% with target=100 %}
+  {% with progres=poin.total_poin|default:0 %}
+  <div class="progress-card">
+    <h3>🎯 Progress Menuju Hadiah</h3>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" style="width:{% if progres >= target %}100{% else %}{{ progres|floatformat:0 }}{% endif %}%"></div>
+    </div>
+    <div class="progress-info">
+      <span>{{ progres }} / {{ target }} poin</span>
+      {% if progres >= target %}
+        <span style="color:#065F46;font-weight:700">🎉 Kamu bisa tukar poin sekarang!</span>
+      {% else %}
+        <span>Butuh {{ target }} poin untuk diskon Rp10.000</span>
+      {% endif %}
+    </div>
+  </div>
+  {% endwith %}
+  {% endwith %}
+
+  <!-- KARTU INFO -->
+  <div class="cards-row">
+    <div class="info-card">
+      <h3>Total Poin</h3>
+      <div class="nilai">{{ poin.total_poin|default:0 }}</div>
+      <p>Poin yang terkumpul hingga saat ini</p>
+    </div>
+    <div class="info-card">
+      <h3>Riwayat Transaksi</h3>
+      <div class="nilai">{{ riwayat.count }}</div>
+      <p>Total aktivitas penambahan & penukaran poin</p>
+    </div>
+  </div>
+
+  <!-- RIWAYAT POIN -->
+  <div class="riwayat-card">
+    <div class="riwayat-head">
+      <h3>📋 Riwayat Poin</h3>
+      <span class="badge-poin">{{ riwayat.count }} aktivitas</span>
+    </div>
+
+    {% if riwayat %}
+      {% for item in riwayat %}
+      <div class="riwayat-item">
+        <div class="riwayat-icon {% if item.tipe == 'tambah' %}icon-tambah{% else %}icon-kurang{% endif %}">
+          {% if item.tipe == 'tambah' %}⭐{% else %}🎁{% endif %}
+        </div>
+        <div class="riwayat-info">
+          <h4>{{ item.keterangan }}</h4>
+          <p>{{ item.dibuat|date:"d M Y, H:i" }}</p>
+        </div>
+        <div class="riwayat-poin {% if item.tipe == 'tambah' %}poin-plus{% else %}poin-minus{% endif %}">
+          {% if item.tipe == 'tambah' %}+{% else %}−{% endif %}{{ item.jumlah }} poin
+        </div>
+      </div>
+      {% endfor %}
+    {% else %}
+      <div class="empty-state">
+        <div class="emo">⭐</div>
+        <p>Belum ada riwayat poin.<br>Selesaikan pesanan untuk mendapatkan poin!</p>
+        <br>
+        <a href="/home/" style="background:var(--accent);color:white;padding:10px 24px;border-radius:10px;text-decoration:none;font-size:14px;font-weight:600">
+          Belanja Sekarang →
+        </a>
+      </div>
+    {% endif %}
+  </div>
+
+  <!-- CARA KERJA POIN -->
+  <div style="background:var(--accent-light);border:1px solid var(--accent2);border-radius:16px;padding:1.5rem;margin-top:1.5rem">
+    <h3 style="font-size:15px;font-weight:700;margin-bottom:1rem;color:var(--text)">💡 Cara Kerja Poin</h3>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem">
+      <div style="text-align:center">
+        <div style="font-size:28px;margin-bottom:.5rem">🛒</div>
+        <div style="font-size:13px;font-weight:600;margin-bottom:4px">Belanja & Selesai</div>
+        <div style="font-size:12px;color:var(--text2)">Poin diberikan otomatis setelah pesanan berstatus <em>selesai</em></div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-size:28px;margin-bottom:.5rem">⭐</div>
+        <div style="font-size:13px;font-weight:600;margin-bottom:4px">Kumpulkan Poin</div>
+        <div style="font-size:12px;color:var(--text2)">Setiap pesanan selesai memberikan poin sesuai konfigurasi toko</div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-size:28px;margin-bottom:.5rem">🎁</div>
+        <div style="font-size:13px;font-weight:600;margin-bottom:4px">Tukar Diskon</div>
+        <div style="font-size:12px;color:var(--text2)">Tukarkan poin saat checkout untuk mendapat potongan harga</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

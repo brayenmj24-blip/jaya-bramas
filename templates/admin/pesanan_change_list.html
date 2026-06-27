@@ -1,0 +1,165 @@
+{% extends "admin/change_list.html" %}
+{% load i18n %}
+
+{% block content %}
+{{ block.super }}
+
+<div style="margin-bottom:1rem;text-align:right">
+  <a href="/export-pesanan/"
+    style="background:#10B981;color:white;padding:9px 18px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:6px">
+    📥 Export ke Excel/CSV
+  </a>
+</div>
+
+<div id="modal-konfirmasi" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9999;align-items:center;justify-content:center">
+  <div style="background:white;border-radius:16px;padding:2rem;width:100%;max-width:460px;margin:1rem;box-shadow:0 24px 64px rgba(0,0,0,.25)">
+    <h2 style="font-size:18px;font-weight:700;margin-bottom:1rem;color:#1C1A16">🔍 Validasi Pembayaran Masuk</h2>
+    <p id="modal-isi" style="font-size:14px;color:#555;line-height:1.7;background:#F8F9FA;border-radius:10px;padding:1rem;margin-bottom:1.5rem"></p>
+    <div style="display:flex;gap:.75rem;justify-content:flex-end">
+      <button onclick="tutupModal('konfirmasi')" style="background:none;border:1.5px solid #E5DDD0;border-radius:8px;padding:10px 20px;font-size:14px;font-weight:600;cursor:pointer;color:#555">Batal</button>
+      <button id="btn-konfirmasi-ya" onclick="eksekusiKonfirmasi()" style="background:#10B981;color:white;border:none;border-radius:8px;padding:10px 20px;font-size:14px;font-weight:600;cursor:pointer">Ya, Dana Sudah Masuk</button>
+    </div>
+  </div>
+</div>
+
+<div id="modal-kirim" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9999;align-items:center;justify-content:center">
+  <div style="background:white;border-radius:16px;padding:2rem;width:100%;max-width:460px;margin:1rem;box-shadow:0 24px 64px rgba(0,0,0,.25)">
+    <h2 style="font-size:18px;font-weight:700;margin-bottom:1rem;color:#1C1A16">🚚 Konfirmasi Pengiriman</h2>
+    <p id="modal-kirim-isi" style="font-size:14px;color:#555;line-height:1.7;background:#F8F9FA;border-radius:10px;padding:1rem;margin-bottom:1.5rem"></p>
+    <div style="display:flex;gap:.75rem;justify-content:flex-end">
+      <button onclick="tutupModal('kirim')" style="background:none;border:1.5px solid #E5DDD0;border-radius:8px;padding:10px 20px;font-size:14px;font-weight:600;cursor:pointer;color:#555">Batal</button>
+      <a id="btn-kirim-ya" href="#" style="background:#3B82F6;color:white;border:none;border-radius:8px;padding:10px 20px;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none">Ya, Kirim Sekarang</a>
+    </div>
+  </div>
+</div>
+
+<div id="modal-selesai" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9999;align-items:center;justify-content:center">
+  <div style="background:white;border-radius:16px;padding:2rem;width:100%;max-width:460px;margin:1rem;box-shadow:0 24px 64px rgba(0,0,0,.25)">
+    <h2 style="font-size:18px;font-weight:700;margin-bottom:1rem;color:#1C1A16">✅ Konfirmasi Selesai</h2>
+    <p id="modal-selesai-isi" style="font-size:14px;color:#555;line-height:1.7;background:#F8F9FA;border-radius:10px;padding:1rem;margin-bottom:1.5rem"></p>
+    <div style="display:flex;gap:.75rem;justify-content:flex-end">
+      <button onclick="tutupModal('selesai')" style="background:none;border:1.5px solid #E5DDD0;border-radius:8px;padding:10px 20px;font-size:14px;font-weight:600;cursor:pointer;color:#555">Batal</button>
+      <a id="btn-selesai-ya" href="#" style="background:#8B5CF6;color:white;border:none;border-radius:8px;padding:10px 20px;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none">Ya, Tandai Selesai</a>
+    </div>
+  </div>
+</div>
+
+<div id="modal-bukti" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:9999;align-items:center;justify-content:center">
+  <div style="background:white;border-radius:16px;padding:1.5rem;width:100%;max-width:520px;margin:1rem;box-shadow:0 24px 64px rgba(0,0,0,.35)">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+      <h2 style="font-size:16px;font-weight:700;color:#1C1A16" id="modal-bukti-judul">Bukti Pembayaran</h2>
+      <button onclick="tutupModal('bukti')" style="background:none;border:none;font-size:22px;cursor:pointer;color:#9CA3AF">×</button>
+    </div>
+    <img id="modal-bukti-img" src="" style="width:100%;border-radius:10px;max-height:400px;object-fit:contain">
+  </div>
+</div>
+
+<div id="admin-toast" style="position:fixed;bottom:2rem;right:2rem;border-radius:12px;padding:14px 20px;font-size:14px;font-weight:500;z-index:99999;transform:translateY(20px);opacity:0;transition:all .3s;pointer-events:none;max-width:400px;line-height:1.5"></div>
+
+<script>
+var _konfirmasiUrl  = null;
+var _nomorPesanan   = null;
+
+function bukaModalKonfirmasi(url, nomor, nominal, nama){
+  _konfirmasiUrl = url;
+  _nomorPesanan  = nomor;
+  document.getElementById('modal-isi').textContent =
+    'Apakah Anda sudah memeriksa mutasi rekening dan memastikan dana sebesar ' +
+    nominal + ' dari ' + nama + ' benar-benar masuk? ' +
+    'Tindakan ini akan mengubah status pesanan menjadi lunas.';
+  document.getElementById('modal-konfirmasi').style.display = 'flex';
+}
+
+function bukaModalKirim(url, nomor){
+  document.getElementById('modal-kirim-isi').textContent =
+    'Apakah pesanan ' + nomor + ' sudah dikirim ke alamat pembeli? Status akan berubah menjadi "Sedang Dikirim".';
+  document.getElementById('btn-kirim-ya').href = url;
+  document.getElementById('modal-kirim').style.display = 'flex';
+}
+
+function bukaModalSelesai(url, nomor){
+  document.getElementById('modal-selesai-isi').textContent =
+    'Apakah pesanan ' + nomor + ' sudah diterima oleh pembeli? Status akan berubah menjadi "Selesai".';
+  document.getElementById('btn-selesai-ya').href = url;
+  document.getElementById('modal-selesai').style.display = 'flex';
+}
+
+function lihatBukti(url, nomor){
+  document.getElementById('modal-bukti-img').src = url;
+  document.getElementById('modal-bukti-judul').textContent = 'Bukti Pembayaran — ' + nomor;
+  document.getElementById('modal-bukti').style.display = 'flex';
+}
+
+function tutupModal(nama){
+  document.getElementById('modal-' + nama).style.display = 'none';
+}
+
+function showAdminToast(msg, bg){
+  bg = bg || '#1D4ED8';
+  var t = document.getElementById('admin-toast');
+  t.textContent = msg;
+  t.style.background = bg;
+  t.style.color = 'white';
+  t.style.opacity = '1';
+  t.style.transform = 'translateY(0)';
+  setTimeout(function(){
+    t.style.opacity = '0';
+    t.style.transform = 'translateY(20px)';
+  }, 5000);
+}
+
+function eksekusiKonfirmasi(){
+  if(!_konfirmasiUrl) return;
+  var btn = document.getElementById('btn-konfirmasi-ya');
+  btn.disabled = true;
+  btn.textContent = 'Memproses...';
+
+  var csrf = '';
+  var cookies = document.cookie.split(';');
+  for(var i = 0; i < cookies.length; i++){
+    var c = cookies[i].trim();
+    if(c.indexOf('csrftoken=') === 0){
+      csrf = c.substring('csrftoken='.length);
+      break;
+    }
+  }
+
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', _konfirmasiUrl);
+  xhr.setRequestHeader('X-CSRFToken', csrf);
+  xhr.onload = function(){
+    try {
+      var data = JSON.parse(xhr.responseText);
+      tutupModal('konfirmasi');
+      if(data.success){
+        showAdminToast(
+          '🔵 Sukses! Pembayaran untuk Order #' + data.nomor + ' berhasil dikonfirmasi. Status pesanan telah diperbarui.',
+          '#1D4ED8'
+        );
+        setTimeout(function(){ location.reload(); }, 2500);
+      } else {
+        showAdminToast('Gagal: ' + (data.error || 'Terjadi kesalahan'), '#DC2626');
+      }
+    } catch(e) {
+      tutupModal('konfirmasi');
+      showAdminToast('Terjadi kesalahan parsing response', '#DC2626');
+    }
+    btn.disabled = false;
+    btn.textContent = 'Ya, Dana Sudah Masuk';
+  };
+  xhr.onerror = function(){
+    tutupModal('konfirmasi');
+    showAdminToast('Terjadi kesalahan koneksi', '#DC2626');
+    btn.disabled = false;
+    btn.textContent = 'Ya, Dana Sudah Masuk';
+  };
+  xhr.send();
+}
+
+['modal-konfirmasi','modal-kirim','modal-selesai','modal-bukti'].forEach(function(id){
+  document.getElementById(id).addEventListener('click', function(e){
+    if(e.target === this) tutupModal(id.replace('modal-',''));
+  });
+});
+</script>
+{% endblock %}
