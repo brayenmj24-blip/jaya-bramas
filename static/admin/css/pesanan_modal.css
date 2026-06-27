@@ -1,0 +1,146 @@
+/* OVERLAY */
+.bj-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 99999;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(3px);
+}
+.bj-overlay.open { display: flex; }
+
+/* BOX */
+.bj-modal {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 480px;
+  margin: 1rem;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  animation: bjIn .2s ease;
+  position: relative;
+}
+@keyframes bjIn {
+  from { transform: translateY(16px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+/* GAMBAR MODAL */
+.bj-img-modal {
+  max-width: 700px;
+  background: #111;
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+}
+.bj-img-modal img {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+.bj-modal-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: .25rem;
+  color: #1C1A16;
+}
+.bj-modal-sub {
+  font-size: 13px;
+  color: #7A7060;
+  margin-bottom: 1.25rem;
+}
+.bj-info-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  padding: .5rem 0;
+  border-bottom: 1px solid #F0EAE0;
+  color: #7A7060;
+}
+.bj-info-row span:last-child { color: #1C1A16; font-weight: 600; }
+.bj-info-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  font-weight: 700;
+  padding: .75rem 0 0;
+  color: #1C1A16;
+}
+.bj-info-total span:last-child { color: #C17F24; font-size: 18px; }
+
+.bj-btn-row {
+  display: flex;
+  gap: .75rem;
+  margin-top: 1.5rem;
+}
+.bj-btn {
+  flex: 1;
+  padding: 11px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all .2s;
+}
+.bj-btn-cancel { background: #F3F4F6; color: #374151; }
+.bj-btn-cancel:hover { background: #E5E7EB; }
+.bj-btn-confirm { background: #10B981; color: white; }
+.bj-btn-confirm:hover { background: #059669; }
+.bj-btn-kirim { background: #3B82F6; color: white; }
+.bj-btn-kirim:hover { background: #2563EB; }
+.bj-btn-selesai { background: #8B5CF6; color: white; }
+.bj-btn-selesai:hover { background: #7C3AED; }
+.bj-btn-close { background: #374151; color: white; }
+.bj-btn-close:hover { background: #1F2937; }
+
+.bj-modal-icon { font-size: 40px; margin-bottom: .75rem; text-align: center; }
+.bj-img-title {
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: .75rem;
+}
+.bj-close-x {
+  position: absolute;
+  top: 12px; right: 16px;
+  background: none; border: none;
+  font-size: 22px; cursor: pointer;
+  color: #9CA3AF; line-height: 1;
+}
+.bj-close-x:hover { color: #374151; }
+
+/* TRANSISI HALAMAN ADMIN */
+body {
+  animation: bjPageFade .25s ease;
+}
+@keyframes bjPageFade {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+#content, .module, .results, .dashboard {
+  animation: bjPageFade .3s ease;
+}
+
+a {
+  transition: color .15s ease, background-color .15s ease;
+}
+
+#nav-sidebar a, .module caption, .module h2 {
+  transition: background-color .2s ease, color .2s ease;
+}
+
+.results tr {
+  transition: background-color .15s ease;
+}
+
+.button, input[type=submit], input[type=button], .submit-row input, a.button {
+  transition: all .2s ease;
+}
